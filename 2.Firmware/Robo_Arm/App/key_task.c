@@ -34,10 +34,10 @@ void KeyTask_Entry(void const * argument)
             joints_init_flag = ! joints_init_flag;
             if(joints_init_flag)
             {
-                joint_T_profilel[0].pos_target = 0;    //-3~3
-                joint_T_profilel[1].pos_target = 0;    //-8~8
-                joint_T_profilel[2].pos_target = 0;    //-4~14
-                joint_T_profilel[3].pos_target = 0;    //-2.7~2.7
+                joint_T_profilel[0].pos_target = JOINT_1_INIT_POS;    //-3~3
+                joint_T_profilel[1].pos_target = JOINT_2_INIT_POS;    //-8~8
+                joint_T_profilel[2].pos_target = JOINT_3_INIT_POS;    //-4~14
+                joint_T_profilel[3].pos_target = JOINT_4_INIT_POS;    //-2.7~2.7
             }
         }
         vbus = (adc_val[0]*3.3f/65535)*11.0f;

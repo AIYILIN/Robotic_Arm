@@ -6,6 +6,11 @@
 #include "communication.h"
 #include "can_bsp.h"
 
+#define JOINT_1_INIT_POS 0
+#define JOINT_2_INIT_POS 30
+#define JOINT_3_INIT_POS 45
+#define JOINT_4_INIT_POS 0
+
 typedef enum
 {
     ARM_JOINT_1 = 1,

@@ -22,37 +22,37 @@ void CommunicationTask_Entry(void const * argument)
 
   Arm_joint_init_para_set(arm_joint);
   joint_T_profilel_param_init(joint_T_profilel);
-  // joint_T_profilel_param_init(joint_T_profilel,5000,30,30);
+
 
   // /* Infinite loop */
-    osDelay(5000);
-    Arm_joint_motion_para_set(arm_joint);
+  osDelay(5000);
+  Arm_joint_motion_para_set(arm_joint);
 
   for(;;)
   {
-    // if(joints_init_flag == 0)
-    // {
-    //   joint_S_profilel[0].target_pos = 10;    
-    //   joint_S_profilel[1].target_pos = 50;    
-    //   joint_S_profilel[2].target_pos = 70;    
-    //   joint_S_profilel[3].target_pos = -30;    
-    // }
-    //   osDelay(5500);
-    // if(joints_init_flag == 0) 
-    // {
-    //   joint_S_profilel[0].target_pos = -10;    
-    //   joint_S_profilel[1].target_pos = -25;    
-    //   joint_S_profilel[2].target_pos = 0;    
-    //   joint_S_profilel[3].target_pos = 30;    
-
-    //   osDelay(5500);
-    // }
+    if(joints_init_flag == 0)
+    {
+      joint_T_profilel[0].pos_target = JOINT_1_INIT_POS-45;    
+      joint_T_profilel[1].pos_target = JOINT_2_INIT_POS+45;    
+      joint_T_profilel[2].pos_target = JOINT_3_INIT_POS-45;    
+      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS+45;    
+    }
+      osDelay(5500);
+    if(joints_init_flag == 0) 
+    {
+      joint_T_profilel[0].pos_target = JOINT_1_INIT_POS+45;    
+      joint_T_profilel[1].pos_target = JOINT_2_INIT_POS-45;    
+      joint_T_profilel[2].pos_target = JOINT_3_INIT_POS+45;    
+      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS-45;    
+    }
+      osDelay(5500);
+    
     if(joints_init_flag  == 1)
     {
-      joint_T_profilel[0].pos_target = 0;    
-      joint_T_profilel[1].pos_target = 0;   
-      joint_T_profilel[2].pos_target = 0;    
-      joint_T_profilel[3].pos_target = 0;    
+      joint_T_profilel[0].pos_target = JOINT_1_INIT_POS;    
+      joint_T_profilel[1].pos_target = JOINT_2_INIT_POS;   
+      joint_T_profilel[2].pos_target = JOINT_3_INIT_POS;    
+      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS;    
     }
 
     osDelay(10);

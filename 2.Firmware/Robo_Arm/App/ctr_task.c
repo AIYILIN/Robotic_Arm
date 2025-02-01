@@ -26,6 +26,16 @@ T_Profile joint_T_profilel[6];
 
 void joint_T_profilel_param_init(T_Profile *profile)
 {
+    joint_T_profilel[0].pos_current = JOINT_1_INIT_POS;
+    joint_T_profilel[1].pos_current = JOINT_2_INIT_POS;
+    joint_T_profilel[2].pos_current = JOINT_3_INIT_POS;
+    joint_T_profilel[3].pos_current = JOINT_4_INIT_POS;
+
+    joint_T_profilel[0].pos_target = JOINT_1_INIT_POS;    
+    joint_T_profilel[1].pos_target = JOINT_2_INIT_POS;    
+    joint_T_profilel[2].pos_target = JOINT_3_INIT_POS;    
+    joint_T_profilel[3].pos_target = JOINT_4_INIT_POS;    
+
     for (int i = 0; i < 6; i++) 
     {
         joint_T_profilel[i].vel_max = 50;    
@@ -34,15 +44,9 @@ void joint_T_profilel_param_init(T_Profile *profile)
         joint_T_profilel[i].vel_s_max = 0;
         joint_T_profilel[i].t_time = 0;
         joint_T_profilel[i].t_time_count = 0;
-        
-        
-        joint_T_profilel[i].pos_current = 0;    //-3~3
-        joint_T_profilel[i].pos_target_last = 0;    //-3~3
+        joint_T_profilel[i].pos_target_last = 0;  
     }
-        joint_T_profilel[0].pos_target = 0;    //-3~3
-        joint_T_profilel[1].pos_target = 0;    //-8~8
-        joint_T_profilel[2].pos_target = 0;    //-4~14
-        joint_T_profilel[3].pos_target = 0;    //-2.7~2.7
+        
 }
 
 
@@ -52,6 +56,7 @@ void Update_T_Profile(T_Profile *profile, float dt)
 /**********************************************************目标位置改变,开始重新规划**********************************************************/
     if(profile->pos_target != profile->pos_target_last)
     {
+        profile->vel_cur = 0;
         profile->pos_target_last = profile->pos_target;
         profile->pos_end = profile->pos_target;
         profile->pos_start = profile->pos_current;
@@ -110,7 +115,7 @@ void Update_T_Profile(T_Profile *profile, float dt)
             break;
         case PHASE_FINISHED://第四阶段，7-完成
             {
-                
+                profile->pos_current = profile->pos_target;
             }
         default:
             break;
@@ -143,7 +148,7 @@ void Update_T_Profile(T_Profile *profile, float dt)
             break;
             case PHASE_FINISHED://第四阶段，7-完成
             {
-                
+                profile->pos_current = profile->pos_target;
             }
             break;
             default:
@@ -157,9 +162,6 @@ void Update_T_Profile(T_Profile *profile, float dt)
 
 
 
-
-
-int debug_count = 0;
 void CtrTask_Entry(void const * argument)
 {
     HAL_UARTEx_ReceiveToIdle_DMA(&huart2, dma_rx_buffer, RX_BUFFER_SIZE);
@@ -167,46 +169,23 @@ void CtrTask_Entry(void const * argument)
     
     osDelay(500);
 
-for (;;) 
-{
-     // 更新所有关节的轨迹
-    for (int i = 0; i < 6; i++) 
+    for (;;) 
     {
-        Update_T_Profile(&joint_T_profilel[i], 0.003f);  // dt=5ms  
-    }   
+        // 更新所有关节的轨迹
+        for (int i = 0; i < 6; i++) 
+        {
+            Update_T_Profile(&joint_T_profilel[i], 0.003f);  // dt=5ms  
+        }   
 
-    // debug_count++;
-    // if(debug_count % 1 == 0) 
-    // {
-    //     char debug_buffer[200];
-    //     sprintf(debug_buffer, "phase=%2x,vel_cur=%4.2f,direction=%4.2f\r\n"
-    //             ,joint_T_profilel[1].phase
-    //             ,joint_T_profilel[1].vel_cur
-    //             ,joint_T_profilel[1].direction
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             // ,joint_T_profilel[1]
-    //             );
-    //     HAL_UART_Transmit(&huart1,(uint8_t*)debug_buffer,strlen(debug_buffer),100);
-    //     debug_count = 0;
-    // }
+
+        for (int i = 0; i < 6; i++) 
+        {
+            arm_joint[i].pos = joint_T_profilel[i].pos_current;     // 使用平滑后的位置
+        }
         
-
-    for (int i = 0; i < 6; i++) 
-    {
-      arm_joint[i].pos = joint_T_profilel[i].pos_current;     // 使用平滑后的位置
+        Arm_joints_control(arm_joint);
+        osDelay(1);
     }
-    
-    Arm_joints_control(arm_joint);
-    osDelay(1);
-}
 
     /* USER CODE END CtrTask_Entry */
 }
