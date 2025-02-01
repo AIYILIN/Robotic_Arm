@@ -37,6 +37,7 @@
         "bsp_arm.h": "c",
         "crc_ccitt.h": "c",
         "math.h": "c",
-        "dma.h": "c"
+        "dma.h": "c",
+        "arm_kinematics.h": "c"
     }
 }

@@ -1537,6 +1537,11 @@
               <FileType>1</FileType>
               <FilePath>..\Algorithm\MahonyAHRS.c</FilePath>
             </File>
+            <File>
+              <FileName>arm_kinematics.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Algorithm\arm_kinematics.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

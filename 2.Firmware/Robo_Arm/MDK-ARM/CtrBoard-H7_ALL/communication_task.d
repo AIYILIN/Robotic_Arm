@@ -68,4 +68,5 @@ ctrboard-h7_all/communication_task.o: ..\App\communication_task.c \
   ..\Algorithm\inc\user_lib.h ..\App\inc\ctr_task.h ..\Bsp\inc\bsp_ps2.h \
   ..\Core\Inc\usart.h D:\KEIL_539\ARM\ARMCLANG\include\string.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h ..\Bsp\go\motor_control.h \
-  ..\Bsp\go\ris_protocol.h ..\vofa+\vofa.h ..\Bsp\inc\bsp_arm.h
+  ..\Bsp\go\ris_protocol.h ..\vofa+\vofa.h ..\Bsp\inc\bsp_arm.h \
+  ..\Algorithm\inc\arm_kinematics.h

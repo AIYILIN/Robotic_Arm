@@ -42,17 +42,29 @@ void Arm_joint_init_para_set(ARM_JOINTS arm_joint[6])
 void Arm_joint_motion_para_set(ARM_JOINTS arm_joint[6])
 {
 
-   arm_joint[0].kp = 20;
-   arm_joint[0].kw = 0.5;
+   arm_joint[0].kp = 0;
+   arm_joint[0].kw = 0;
 
-   arm_joint[1].kp = 6;
-   arm_joint[1].kw = 0.22;
+   arm_joint[1].kp = 0;
+   arm_joint[1].kw = 0;
 
-   arm_joint[2].kp = 6;
-   arm_joint[2].kw = 0.22;
+   arm_joint[2].kp = 0;
+   arm_joint[2].kw = 0;
 
-   arm_joint[3].kp = 20;
-   arm_joint[3].kw = 0.5;
+   arm_joint[3].kp = 0;
+   arm_joint[3].kw = 0;
+
+//    arm_joint[0].kp = 20;
+//    arm_joint[0].kw = 0.5;
+
+//    arm_joint[1].kp = 6;
+//    arm_joint[1].kw = 0.22;
+
+//    arm_joint[2].kp = 6;
+//    arm_joint[2].kw = 0.22;
+
+//    arm_joint[3].kp = 20;
+//    arm_joint[3].kw = 0.5;
 
 }
 
