@@ -1,27 +1,16 @@
-#include "communication.h"
-#include "vofa.h"
-#include "bsp_arm.h"
-#include "motor_control.h"
-#include "arm_kinematics.h"
-#include "can_bsp.h"
-#include "ctr_task.h"
 
-/* USER CODE BEGIN Header_CommunicationTask_Entry */
-/**
-* @brief Function implementing the Communication thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_CommunicationTask_Entry */
+#include "kinematic_task.h"
+
+
 
 
 // 计算结果存储
 float angles[4];
 float position[3];
 
-void CommunicationTask_Entry(void const * argument)
+void KinematicsTask_Entry(void const * argument)
 {
-  /* USER CODE BEGIN CommunicationTask_Entry */
+  /* USER CODE BEGIN KinematicsTask_Entry */
 	
 	canfd_filter(&hfdcan1);
   Init_Motor_All();
@@ -43,6 +32,7 @@ void CommunicationTask_Entry(void const * argument)
     angles[3] = (-Motors.Motor1.Angle)/180.0f*M_PI;
 
     // 计算正运动学
+    
     forward_kinematics(angles, position);
     // if(joints_init_flag == 0)
     // {
@@ -71,5 +61,5 @@ void CommunicationTask_Entry(void const * argument)
 
     osDelay(10);
   }
-  /* USER CODE END CommunicationTask_Entry */
+  /* USER CODE END KinematicsTask_Entry */
 }

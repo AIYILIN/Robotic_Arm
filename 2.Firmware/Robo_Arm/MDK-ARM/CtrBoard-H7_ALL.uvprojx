@@ -340,7 +340,7 @@
               <MiscControls>-Wno-invalid-source-encoding</MiscControls>
               <Define>USE_HAL_DRIVER,STM32H723xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../USB_DEVICE/App;../USB_DEVICE/Target;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../App/inc;../Bsp/inc;../vofa+;../Algorithm/inc;../Bsp/go;../Drivers/CMSIS/DSP/Include</IncludePath>
+              <IncludePath>../Core/Inc;../USB_DEVICE/App;../USB_DEVICE/Target;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../App/inc;../Bsp/inc;../vofa+;../Algorithm/inc;../Bsp/go</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1508,19 +1508,19 @@
               <FilePath>..\App\fun_test_task.c</FilePath>
             </File>
             <File>
-              <FileName>ctr_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\App\ctr_task.c</FilePath>
-            </File>
-            <File>
               <FileName>rgb_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\rgb_task.c</FilePath>
             </File>
             <File>
-              <FileName>communication_task.c</FileName>
+              <FileName>motor_comm_task.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\App\communication_task.c</FilePath>
+              <FilePath>..\App\motor_comm_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>kinematic_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\kinematic_task.c</FilePath>
             </File>
           </Files>
         </Group>

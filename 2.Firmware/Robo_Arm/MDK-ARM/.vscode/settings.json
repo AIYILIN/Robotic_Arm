@@ -38,6 +38,9 @@
         "crc_ccitt.h": "c",
         "math.h": "c",
         "dma.h": "c",
-        "arm_kinematics.h": "c"
+        "arm_kinematics.h": "c",
+        "stdint.h": "c",
+        "motor_comm_task.h": "c",
+        "kinematic_task.h": "c"
     }
 }

@@ -10,7 +10,14 @@ L4 = Link('d', 27.7,    'a', 215.389, 'alpha', pi/2,'offset',0);
 
 L1.qlim = [-pi/2,pi];%利用qlim设置每个关节的旋转角度范围
 robot=SerialLink([L1,L2,L3,L4],'name','aiyilin');   %SerialLink 类函数
-
+T1 = robot.links(1).A(0);
+T2 = robot.links(2).A(0);
+T3 = robot.links(3).A(0);
+T4 = robot.links(4).A(0);
+disp('T1:'); disp(T1);
+disp('T2:'); disp(T2);
+disp('T3:'); disp(T3);
+disp('T4:'); disp(T4);
 %% 普通机器人的示教展示
 
 robot.display();%展示出机器人的信息

@@ -1,6 +1,9 @@
 #include "arm_kinematics.h"
 #include "math.h"
 #include <stdint.h>
+#include <string.h>
+#include "usart.h"
+#include "stdio.h"
 
 // 矩阵乘法函数（A * B）
 static void matrix_multiply(Matrix4x4 *result, const Matrix4x4 *a, const Matrix4x4 *b) 
@@ -46,9 +49,15 @@ void forward_kinematics(const float *joint_angles, float *xyz)
         {0,0,0,1}
     }};
     
+    char debug_buff[200];
     // 逐关节计算变换矩阵
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < 4; ++i)
+    {
         Matrix4x4 T = dh_transform(joint_angles[i], &links[i]);
+
+        sprintf(debug_buff,"Joint %d Transform Matrix:\n %4.2f %4.2f %4.2f %4.2f\n %4.2f %4.2f %4.2f %4.2f\n %4.2f %4.2f %4.2f %4.2f\n %4.2f %4.2f %4.2f %4.2f\n\n ", i+1,T.m[0][0],T.m[0][1],T.m[0][2],T.m[0][3],T.m[1][0],T.m[1][1],T.m[1][2],T.m[1][3],T.m[2][0],T.m[2][1],T.m[2][2],T.m[2][3],T.m[3][0],T.m[3][1],T.m[3][2],T.m[3][3]);
+        HAL_UART_Transmit(&huart1, (uint8_t*)debug_buff, strlen(debug_buff), HAL_MAX_DELAY);
+
         Matrix4x4 temp;
         matrix_multiply(&temp, &T_total, &T);
         T_total = temp; // 更新累积变换矩阵
@@ -60,13 +69,3 @@ void forward_kinematics(const float *joint_angles, float *xyz)
     xyz[2] = T_total.m[2][3];
 }
 
-
-/***************************** 优化建议 *******************************
-1. 使用CMSIS-DSP库加速三角函数计算：
-   #include "arm_math.h"
-   float ct = arm_cos_f32(theta + link->offset);
-   
-4. 启用STM32硬件FPU加速浮点运算：
-   - 在IDE中启用浮点单元
-   - 添加编译选项：-mfpu=fpv4-sp-d16 -mfloat-abi=hard
-**********************************************************************/

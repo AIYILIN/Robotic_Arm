@@ -60,15 +60,15 @@ osStaticThreadDef_t ImuTaskControlBlock;
 osThreadId FunTestHandle;
 uint32_t FunTestBuffer[ 128 ];
 osStaticThreadDef_t FunTestControlBlock;
-osThreadId CtrTaskHandle;
-uint32_t CtrTaskBuffer[ 4096 ];
-osStaticThreadDef_t CtrTaskControlBlock;
+osThreadId MotorCommTaskHandle;
+uint32_t MotorCommTaskBuffer[ 4096 ];
+osStaticThreadDef_t MotorCommTaskControlBlock;
 osThreadId RgbTaskHandle;
 uint32_t RgbTaskBuffer[ 128 ];
 osStaticThreadDef_t RgbTaskControlBlock;
-osThreadId CommunicationHandle;
-uint32_t CommunicationBuffer[ 2048 ];
-osStaticThreadDef_t CommunicationControlBlock;
+osThreadId KinematicsTaskHandle;
+uint32_t KinematicsTaskBuffer[ 4096 ];
+osStaticThreadDef_t KinematicsTaskControlBlock;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -80,9 +80,9 @@ void KeyTask_Entry(void const * argument);
 void LcdTask_Entry(void const * argument);
 void ImuTask_Entry(void const * argument);
 void FunTest_Entry(void const * argument);
-void CtrTask_Entry(void const * argument);
+void MotorCommTask_Entry(void const * argument);
 void RgbTask_Entry(void const * argument);
-void CommunicationTask_Entry(void const * argument);
+void KinematicsTask_Entry(void const * argument);
 
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -169,17 +169,17 @@ void MX_FREERTOS_Init(void) {
   osThreadStaticDef(FunTest, FunTest_Entry, osPriorityBelowNormal, 0, 128, FunTestBuffer, &FunTestControlBlock);
   FunTestHandle = osThreadCreate(osThread(FunTest), NULL);
 
-  /* definition and creation of CtrTask */
-  osThreadStaticDef(CtrTask, CtrTask_Entry, osPriorityHigh, 0, 4096, CtrTaskBuffer, &CtrTaskControlBlock);
-  CtrTaskHandle = osThreadCreate(osThread(CtrTask), NULL);
+  /* definition and creation of MotorCommTask */
+  osThreadStaticDef(MotorCommTask, MotorCommTask_Entry, osPriorityHigh, 0, 4096, MotorCommTaskBuffer, &MotorCommTaskControlBlock);
+  MotorCommTaskHandle = osThreadCreate(osThread(MotorCommTask), NULL);
 
   /* definition and creation of RgbTask */
   osThreadStaticDef(RgbTask, RgbTask_Entry, osPriorityNormal, 0, 128, RgbTaskBuffer, &RgbTaskControlBlock);
   RgbTaskHandle = osThreadCreate(osThread(RgbTask), NULL);
 
-  /* definition and creation of Communication */
-  osThreadStaticDef(Communication, CommunicationTask_Entry, osPriorityHigh, 0, 2048, CommunicationBuffer, &CommunicationControlBlock);
-  CommunicationHandle = osThreadCreate(osThread(Communication), NULL);
+  /* definition and creation of KinematicsTask */
+  osThreadStaticDef(KinematicsTask, KinematicsTask_Entry, osPriorityHigh, 0, 4096, KinematicsTaskBuffer, &KinematicsTaskControlBlock);
+  KinematicsTaskHandle = osThreadCreate(osThread(KinematicsTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -279,22 +279,22 @@ __weak void FunTest_Entry(void const * argument)
   /* USER CODE END FunTest_Entry */
 }
 
-/* USER CODE BEGIN Header_CtrTask_Entry */
+/* USER CODE BEGIN Header_MotorCommTask_Entry */
 /**
-* @brief Function implementing the CtrTask thread.
+* @brief Function implementing the MotorCommTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_CtrTask_Entry */
-__weak void CtrTask_Entry(void const * argument)
+/* USER CODE END Header_MotorCommTask_Entry */
+__weak void MotorCommTask_Entry(void const * argument)
 {
-  /* USER CODE BEGIN CtrTask_Entry */
+  /* USER CODE BEGIN MotorCommTask_Entry */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END CtrTask_Entry */
+  /* USER CODE END MotorCommTask_Entry */
 }
 
 /* USER CODE BEGIN Header_RgbTask_Entry */
@@ -315,22 +315,22 @@ __weak void RgbTask_Entry(void const * argument)
   /* USER CODE END RgbTask_Entry */
 }
 
-/* USER CODE BEGIN Header_CommunicationTask_Entry */
+/* USER CODE BEGIN Header_KinematicsTask_Entry */
 /**
-* @brief Function implementing the Communication thread.
+* @brief Function implementing the KinematicsTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_CommunicationTask_Entry */
-__weak void CommunicationTask_Entry(void const * argument)
+/* USER CODE END Header_KinematicsTask_Entry */
+__weak void KinematicsTask_Entry(void const * argument)
 {
-  /* USER CODE BEGIN CommunicationTask_Entry */
+  /* USER CODE BEGIN KinematicsTask_Entry */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END CommunicationTask_Entry */
+  /* USER CODE END KinematicsTask_Entry */
 }
 
 /* Private application code --------------------------------------------------*/

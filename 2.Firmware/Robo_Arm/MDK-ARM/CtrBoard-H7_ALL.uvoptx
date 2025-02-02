@@ -1050,7 +1050,7 @@
 
   <Group>
     <GroupName>Middlewares/USB_Device_Library</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1106,7 +1106,7 @@
 
   <Group>
     <GroupName>Bsp</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1341,8 +1341,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\App\ctr_task.c</PathWithFileName>
-      <FilenameWithoutPath>ctr_task.c</FilenameWithoutPath>
+      <PathWithFileName>..\App\rgb_task.c</PathWithFileName>
+      <FilenameWithoutPath>rgb_task.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1353,8 +1353,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\App\rgb_task.c</PathWithFileName>
-      <FilenameWithoutPath>rgb_task.c</FilenameWithoutPath>
+      <PathWithFileName>..\App\motor_comm_task.c</PathWithFileName>
+      <FilenameWithoutPath>motor_comm_task.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1365,8 +1365,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\App\communication_task.c</PathWithFileName>
-      <FilenameWithoutPath>communication_task.c</FilenameWithoutPath>
+      <PathWithFileName>..\App\kinematic_task.c</PathWithFileName>
+      <FilenameWithoutPath>kinematic_task.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

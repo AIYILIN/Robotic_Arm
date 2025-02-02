@@ -1,16 +1,6 @@
+
 #include "key_task.h"
-#include "adc.h"
-#include "cmsis_os.h"
-#include "vofa.h"
-#include "bsp_user_key.h"
-#include "bsp_buzzer.h"
-#include "cybergear.h"
-#include "ws2812.h"
-#include "bsp_power_enable.h"
-#include "ctr_task.h"
-#include "bsp_ps2.h"
-#include "usart.h"
-#include "bsp_arm.h"
+
 
 float vbus = 0;
 volatile uint16_t adc_val[2];
