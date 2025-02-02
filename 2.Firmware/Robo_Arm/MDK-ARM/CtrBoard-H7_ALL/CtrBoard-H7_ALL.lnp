@@ -1,6 +1,7 @@
 --cpu Cortex-M7.fp.dp
 "ctrboard-h7_all\startup_stm32h723xx.o"
 "ctrboard-h7_all\vofa.o"
+"..\Drivers\CMSIS\DSP\Lib\ARM\arm_cortexM7l_math.lib"
 "ctrboard-h7_all\main.o"
 "ctrboard-h7_all\gpio.o"
 "ctrboard-h7_all\freertos.o"
