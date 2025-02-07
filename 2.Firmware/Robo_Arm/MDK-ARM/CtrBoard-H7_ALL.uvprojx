@@ -1488,11 +1488,6 @@
           <GroupName>App</GroupName>
           <Files>
             <File>
-              <FileName>key_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\App\key_task.c</FilePath>
-            </File>
-            <File>
               <FileName>lcd_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\lcd_task.c</FilePath>
@@ -1521,6 +1516,11 @@
               <FileName>kinematic_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\kinematic_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>safe_monitor_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\safe_monitor_task.c</FilePath>
             </File>
           </Files>
         </Group>

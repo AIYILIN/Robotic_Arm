@@ -34,8 +34,12 @@ static const DH_Link links[] =
     { 27.7f,   215.389f, M_PI_2,  0.0f    }  // L4
 };
 
-// 正运动学计算函数
-void forward_kinematics(const float *joint_angles, float *end_effector_pose);
+
+extern void forward_kinematics(const float *joint_angles, float *end_effector_pose);// 正运动学计算函数
+extern int inverse_kinematics(float x, float y, float z, float theta[4]);// 逆运动学求解函数
+
+extern float proj_x ; // 根据末端工具坐标修正
+extern float proj_y ;
 
 #endif
 

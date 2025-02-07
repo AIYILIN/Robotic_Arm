@@ -18,15 +18,21 @@ disp('T1:'); disp(T1);
 disp('T2:'); disp(T2);
 disp('T3:'); disp(T3);
 disp('T4:'); disp(T4);
+
 %% 普通机器人的示教展示
 
 robot.display();%展示出机器人的信息
 teach(robot);%调出示教滑块
 
+% MATLAB验证代码
+target = [50 50 600]; % 同C代码中的目标
+q_ik = robot.ikine(transl(target), 'q0', [0 0 0 0], 'mask', [1 1 1 0 0 0]);
+disp(q_ik/3.1415926*180);
+
  
 %% 展示当六个关节角为000000时对应的姿态
 
-theta=[0 0 0 0 ];
+% theta=[0 0 0 0 ];
 % robot.plot(theta);   
 % p_1=robot.fkine(theta);
 
@@ -37,9 +43,9 @@ theta=[0 0 0 0 ];
 % p0=robot.fkine(theta);
 % p1=robot.fkine(theta1);
 
-%% 机器人的逆解
+% 机器人的逆解
 
-% Pos_x=30;Pos_y=0;Pos_z=-25;
+% Pos_x=180;Pos_y=180;Pos_z=180;
 %  p = [1 0 0 Pos_x;
 %       0 1 0 Pos_y;
 %       0 0 1 Pos_z;

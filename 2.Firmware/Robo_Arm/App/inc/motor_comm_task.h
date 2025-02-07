@@ -13,7 +13,7 @@
 #include "bsp_power_enable.h"
 #include "imu_task.h"
 #include "user_lib.h"
-#include "key_task.h"
+#include "safe_monitor_task.h"
 #include "bsp_ps2.h"
 #include "BMI088Middleware.h"
 #include "fun_test_task.h"

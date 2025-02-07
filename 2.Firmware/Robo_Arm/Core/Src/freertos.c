@@ -48,9 +48,9 @@
 
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
-osThreadId KeyTaskHandle;
-uint32_t KeyTaskBuffer[ 128 ];
-osStaticThreadDef_t KeyTaskControlBlock;
+osThreadId SafeMonitorTaskHandle;
+uint32_t SafeMonitorBuffer[ 128 ];
+osStaticThreadDef_t SafeMonitorControlBlock;
 osThreadId LcdTaskHandle;
 uint32_t LcdTaskBuffer[ 256 ];
 osStaticThreadDef_t LcdTaskControlBlock;
@@ -76,7 +76,7 @@ osStaticThreadDef_t KinematicsTaskControlBlock;
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void const * argument);
-void KeyTask_Entry(void const * argument);
+void SafeMonitorTask_Entry(void const * argument);
 void LcdTask_Entry(void const * argument);
 void ImuTask_Entry(void const * argument);
 void FunTest_Entry(void const * argument);
@@ -153,9 +153,9 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
-  /* definition and creation of KeyTask */
-  osThreadStaticDef(KeyTask, KeyTask_Entry, osPriorityNormal, 0, 128, KeyTaskBuffer, &KeyTaskControlBlock);
-  KeyTaskHandle = osThreadCreate(osThread(KeyTask), NULL);
+  /* definition and creation of SafeMonitorTask */
+  osThreadStaticDef(SafeMonitorTask, SafeMonitorTask_Entry, osPriorityHigh, 0, 128, SafeMonitorBuffer, &SafeMonitorControlBlock);
+  SafeMonitorTaskHandle = osThreadCreate(osThread(SafeMonitorTask), NULL);
 
   /* definition and creation of LcdTask */
   osThreadStaticDef(LcdTask, LcdTask_Entry, osPriorityNormal, 0, 256, LcdTaskBuffer, &LcdTaskControlBlock);
@@ -207,22 +207,22 @@ void StartDefaultTask(void const * argument)
   /* USER CODE END StartDefaultTask */
 }
 
-/* USER CODE BEGIN Header_KeyTask_Entry */
+/* USER CODE BEGIN Header_SafeMonitorTask_Entry */
 /**
-* @brief Function implementing the KeyTask thread.
+* @brief Function implementing the SafeMonitorTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_KeyTask_Entry */
-__weak void KeyTask_Entry(void const * argument)
+/* USER CODE END Header_SafeMonitorTask_Entry */
+__weak void SafeMonitorTask_Entry(void const * argument)
 {
-  /* USER CODE BEGIN KeyTask_Entry */
+  /* USER CODE BEGIN SafeMonitorTask_Entry */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END KeyTask_Entry */
+  /* USER CODE END SafeMonitorTask_Entry */
 }
 
 /* USER CODE BEGIN Header_LcdTask_Entry */

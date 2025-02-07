@@ -9,7 +9,7 @@
 #include "motor_pid.h"
 #include "bsp_user_key.h"
 #include "imu_task.h"
-#include "key_task.h"
+#include "safe_monitor_task.h"
 #include "user_lib.h"
 #include "motor_comm_task.h"
 #include "bsp_ps2.h"

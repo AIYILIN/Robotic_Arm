@@ -1,22 +1,7 @@
-ctrboard-h7_all/kinematic_task.o: ..\App\kinematic_task.c \
-  ..\App\inc\kinematic_task.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\stddef.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\stdint.h ..\Core\Inc\FreeRTOSConfig.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\Core\Inc\fdcan.h ..\Core\Inc\main.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
+ctrboard-h7_all/safe_monitor_task.o: ..\App\safe_monitor_task.c \
+  ..\App\inc\safe_monitor_task.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdint.h ..\Core\Inc\adc.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_def.h \
@@ -31,6 +16,7 @@ ctrboard-h7_all/kinematic_task.o: ..\App\kinematic_task.c \
   d:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\Robo_Arm\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\system_stm32h7xx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stddef.h \
   D:\KEIL_539\ARM\ARMCLANG\include\math.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio.h \
@@ -61,17 +47,30 @@ ctrboard-h7_all/kinematic_task.o: ..\App\kinematic_task.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
-  ..\Bsp\inc\can_bsp.h ..\Bsp\inc\cybergear.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
-  ..\Algorithm\inc\motor_pid.h ..\Bsp\inc\bsp_user_key.h \
-  ..\Core\Inc\gpio.h ..\App\inc\imu_task.h \
-  ..\App\inc\safe_monitor_task.h ..\Core\Inc\adc.h ..\vofa+\vofa.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
+  ..\Core\Inc\FreeRTOSConfig.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
+  ..\vofa+\vofa.h ..\Bsp\inc\bsp_user_key.h ..\Core\Inc\gpio.h \
   ..\Bsp\inc\bsp_buzzer.h ..\Core\Inc\tim.h ..\Bsp\inc\bsp_ps2.h \
-  ..\Bsp\inc\bsp_arm.h ..\Bsp\go\motor_control.h \
-  ..\Bsp\go\ris_protocol.h ..\App\inc\motor_comm_task.h \
+  ..\Bsp\inc\bsp_arm.h ..\Bsp\inc\cybergear.h ..\Core\Inc\FDCAN.h \
+  ..\Bsp\inc\can_bsp.h D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
+  ..\Bsp\go\motor_control.h ..\Bsp\go\ris_protocol.h \
+  ..\App\inc\motor_comm_task.h ..\Algorithm\inc\motor_pid.h \
   ..\Bsp\inc\ws2812.h D:\KEIL_539\ARM\ARMCLANG\include\string.h \
-  ..\Bsp\inc\bsp_power_enable.h ..\Algorithm\inc\user_lib.h \
-  ..\Bsp\inc\BMI088Middleware.h ..\App\inc\fun_test_task.h \
-  ..\Core\Inc\dma.h ..\Core\Inc\usart.h \
+  ..\Bsp\inc\bsp_power_enable.h ..\App\inc\imu_task.h \
+  ..\Algorithm\inc\user_lib.h ..\Bsp\inc\BMI088Middleware.h \
+  ..\App\inc\fun_test_task.h ..\Core\Inc\dma.h \
+  ..\App\inc\kinematic_task.h ..\Core\Inc\usart.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
   ..\Algorithm\inc\arm_kinematics.h
