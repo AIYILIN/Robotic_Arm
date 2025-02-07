@@ -46,4 +46,9 @@ ctrboard-h7_all/bmi088driver.o: ..\Bsp\BMI088driver.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
-  ..\Bsp\inc\BMI088reg.h ..\Bsp\inc\BMI088Middleware.h
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Bsp\inc\BMI088reg.h \
+  ..\Bsp\inc\BMI088Middleware.h

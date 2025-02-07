@@ -1,8 +1,15 @@
 ctrboard-h7_all/arm_kinematics.o: ..\Algorithm\arm_kinematics.c \
   ..\Algorithm\inc\arm_kinematics.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\math.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdint.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\string.h ..\Core\Inc\usart.h \
+  ..\Drivers\CMSIS\Include\cmsis_armclang.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\arm_compat.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\arm_acle.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\math.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Core\Inc\usart.h \
   ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
@@ -12,9 +19,6 @@ ctrboard-h7_all/arm_kinematics.o: ..\Algorithm\arm_kinematics.c \
   ..\Drivers\CMSIS\Include\core_cm7.h \
   d:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\Robo_Arm\Drivers\CMSIS\Include\cmsis_version.h \
   d:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\Robo_Arm\Drivers\CMSIS\Include\cmsis_compiler.h \
-  d:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\Robo_Arm\Drivers\CMSIS\Include\cmsis_armclang.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\arm_compat.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\arm_acle.h \
   d:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\Robo_Arm\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\system_stm32h7xx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \

@@ -60,4 +60,9 @@ ctrboard-h7_all/imu_task.o: ..\App\imu_task.c ..\App\inc\imu_task.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h \
   ..\Algorithm\inc\MahonyAHRS.h ..\Core\Inc\tim.h ..\vofa+\vofa.h

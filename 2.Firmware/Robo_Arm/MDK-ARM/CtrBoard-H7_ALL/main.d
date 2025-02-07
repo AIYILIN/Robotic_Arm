@@ -46,6 +46,11 @@ ctrboard-h7_all/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \
@@ -66,6 +71,5 @@ ctrboard-h7_all/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h \
   ..\USB_DEVICE\Target\usbd_conf.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\stdlib.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\string.h ..\Core\Inc\gpio.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdlib.h ..\Core\Inc\gpio.h \
   ..\vofa+\vofa.h ..\Bsp\inc\w25q64.h

@@ -20,6 +20,7 @@
                 "d:\\0_BackUP\\Project\\Robotic_Arm\\Robo_Arm\\2.Firmware\\Robo_Arm\\vofa+",
                 "d:\\0_BackUP\\Project\\Robotic_Arm\\Robo_Arm\\2.Firmware\\Robo_Arm\\Algorithm\\inc",
                 "d:\\0_BackUP\\Project\\Robotic_Arm\\Robo_Arm\\2.Firmware\\Robo_Arm\\Bsp\\go",
+                "d:\\0_BackUP\\Project\\Robotic_Arm\\Robo_Arm\\2.Firmware\\Robo_Arm\\Middlewares\\ST\\ARM\\DSP\\Inc",
                 "D:\\KEIL_539\\ARM\\ARMCLANG\\include",
                 "D:\\KEIL_539\\ARM\\ARMCLANG\\include\\arm_linux",
                 "D:\\KEIL_539\\ARM\\ARMCLANG\\include\\arm_linux_compat",
@@ -39,6 +40,7 @@
             "defines": [
                 "USE_HAL_DRIVER",
                 "STM32H723xx",
+                "ARM_MATH_CM7",
                 "__alignof__(x)=",
                 "__asm(x)=",
                 "__asm__(x)=",

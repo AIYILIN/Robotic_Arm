@@ -47,6 +47,11 @@ ctrboard-h7_all/motor_comm_task.o: ..\App\motor_comm_task.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \
@@ -62,8 +67,7 @@ ctrboard-h7_all/motor_comm_task.o: ..\App\motor_comm_task.c \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
   ..\Bsp\inc\ws2812.h ..\Core\Inc\fdcan.h ..\Bsp\inc\can_bsp.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\string.h ..\Bsp\inc\cybergear.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
+  ..\Bsp\inc\cybergear.h D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
   ..\Bsp\inc\bsp_power_enable.h ..\App\inc\imu_task.h \
   ..\Algorithm\inc\user_lib.h ..\App\inc\safe_monitor_task.h \
   ..\Core\Inc\adc.h ..\vofa+\vofa.h ..\Bsp\inc\bsp_user_key.h \

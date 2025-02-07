@@ -8,6 +8,8 @@
 #define M_PI_2 (M_PI/2.0f)
 
 
+#define ARM_MATH_MATRIX_CHECK  // 在包含arm_math.h前定义
+#include "arm_math.h"
 
 
 // 定义齐次变换矩阵结构体
@@ -37,6 +39,7 @@ static const DH_Link links[] =
 
 extern void forward_kinematics(const float *joint_angles, float *end_effector_pose);// 正运动学计算函数
 extern int inverse_kinematics(float x, float y, float z, float theta[4]);// 逆运动学求解函数
+extern void ik_iterative(float target[3], float joint_angles[4], int max_iter);
 
 extern float proj_x ; // 根据末端工具坐标修正
 extern float proj_y ;

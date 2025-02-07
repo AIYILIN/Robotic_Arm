@@ -35,6 +35,7 @@
 #include "vofa.h"
 #include "w25q64.h"
 #include <stdio.h>
+#include "arm_math.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

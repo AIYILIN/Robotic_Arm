@@ -25,7 +25,7 @@ robot.display();%展示出机器人的信息
 teach(robot);%调出示教滑块
 
 % MATLAB验证代码
-target = [50 50 600]; % 同C代码中的目标
+target = [200 200 300]; % 同C代码中的目标
 q_ik = robot.ikine(transl(target), 'q0', [0 0 0 0], 'mask', [1 1 1 0 0 0]);
 disp(q_ik/3.1415926*180);
 

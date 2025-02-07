@@ -59,8 +59,11 @@ ctrboard-h7_all/bsp_ps2.o: ..\Bsp\bsp_ps2.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
-  ..\Bsp\inc\bsp_ps2.h ..\Bsp\inc\BMI088Middleware.h \
-  ..\App\inc\fun_test_task.h ..\Core\Inc\usart.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\string.h ..\vofa+\vofa.h \
-  ..\Bsp\inc\dwt.h
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Bsp\inc\bsp_ps2.h \
+  ..\Bsp\inc\BMI088Middleware.h ..\App\inc\fun_test_task.h \
+  ..\Core\Inc\usart.h D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
+  ..\vofa+\vofa.h ..\Bsp\inc\dwt.h

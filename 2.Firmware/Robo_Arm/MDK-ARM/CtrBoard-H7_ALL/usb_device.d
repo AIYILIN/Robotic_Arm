@@ -52,6 +52,10 @@ ctrboard-h7_all/usb_device.o: ..\USB_DEVICE\App\usb_device.c \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdlib.h \
   D:\KEIL_539\ARM\ARMCLANG\include\string.h ..\Core\Inc\main.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h \
   ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h \
   ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h \
   ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h \

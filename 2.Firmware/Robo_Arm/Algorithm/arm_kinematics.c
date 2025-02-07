@@ -5,7 +5,6 @@
 #include "usart.h"
 #include "stdio.h"
 
-
 // 矩阵乘法函数（A * B）
 static void matrix_multiply(Matrix4x4 *result, const Matrix4x4 *a, const Matrix4x4 *b) 
 {
@@ -118,56 +117,148 @@ int inverse_kinematics(float x, float y, float z, float theta[4])
     return 0;
 }
 
-// 数值迭代法逆运动学（备份，当解析法失效时使用）
-// 输入：目标位置(x, y, z)，初始猜测joint_angles，迭代次数max_iter
-// 输出：更新后的joint_angles
-void ik_iterative(float target[3], float joint_angles[4], int max_iter) 
-{
-    float alpha = 0.1f; // 学习率
-    float tolerance = 1e-4f; // 容差
+#include <math.h>
+#include "arm_math.h"
+
+// 角度约束宏
+#define ANGLE_MOD(angle) fmodf((angle), 2*M_PI)
+// 角度约束函数（保持角度在[-π, π]）
+static void constrain_angles(float *angles) {
+    for (int i = 0; i < 4; ++i) {
+        while (angles[i] > M_PI) angles[i] -= 2*M_PI;
+        while (angles[i] < -M_PI) angles[i] += 2*M_PI;
+    }
+}
+
+void ik_iterative(float target[3], float joint_angles[4], int max_iter) {
+    const float initial_alpha = 0.1f;     // 增大初始学习率
+    const float alpha_decay = 0.98f;      // 调整衰减率
+    const float tolerance = 1e-4f;        // 收敛阈值
+    const float lambda = 0.01f;           // 减小阻尼系数
     
+    float alpha = initial_alpha;
+    float last_error = INFINITY;
+
+    // 矩阵初始化（修正维度）
+    arm_matrix_instance_f32 J_mat, J_T_mat, error_mat, delta_theta_mat;
+    float J[12] = {0};          // 正确维度：3x4矩阵（行优先存储）
+    float J_T[12] = {0};        // 转置后维度：4x3
+    float error[3] = {0};
+    float delta_theta[4] = {0};
+
+    arm_mat_init_f32(&J_mat, 3, 4, J);       // 修正矩阵维度声明
+    arm_mat_init_f32(&J_T_mat, 4, 3, J_T);
+    arm_mat_init_f32(&error_mat, 3, 1, error);
+    arm_mat_init_f32(&delta_theta_mat, 4, 1, delta_theta);
+
     for (int iter = 0; iter < max_iter; iter++) {
-        // 正运动学计算当前末端位置
         float current[3];
         forward_kinematics(joint_angles, current);
+
+        // 计算误差向量
+        error[0] = target[0] - current[0];
+        error[1] = target[1] - current[1];
+        error[2] = target[2] - current[2];
         
-        // 计算误差
-        float error[3] = {target[0] - current[0], 
-                         target[1] - current[1],
-                         target[2] - current[2]};
-        if (arm_sqrt_f32(error[0]*error[0] + error[1]*error[1] + error[2]*error[2]) < tolerance)
+        // 计算误差范数
+        float error_sq = error[0]*error[0] + error[1]*error[1] + error[2]*error[2];
+        float error_norm;
+        arm_sqrt_f32(error_sq, &error_norm);
+
+        if (error_norm < tolerance) {
+            char debug_buff[100];
+            sprintf(debug_buff,"Converged at iter %d: error=%.4f\n", iter, error_norm);
+            HAL_UART_Transmit(&huart1, (uint8_t*)debug_buff, strlen(debug_buff), HAL_MAX_DELAY);
             break;
-        
-        // 计算雅可比矩阵（简化的数值微分法）
-        float J[3][4] = {0};
-        float delta = 1e-3f;
+        }
+
+        // 动态学习率调整
+        if (error_norm > last_error) {
+            alpha *= 0.5f;  // 误差增大时快速降低学习率
+        }
+        last_error = error_norm;
+        alpha *= alpha_decay;
+
+        // 数值法计算雅可比矩阵（修正索引顺序）
+        const float delta = 1e-3f;
         for (int i = 0; i < 4; i++) {
-            float angles_plus[4];
+            float angles_plus[4], pos_plus[3];
             arm_copy_f32(joint_angles, angles_plus, 4);
             angles_plus[i] += delta;
             
-            float pos_plus[3];
             forward_kinematics(angles_plus, pos_plus);
             
-            for (int j = 0; j < 3; j++) {
-                J[j][i] = (pos_plus[j] - current[j]) / delta;
-            }
+            // 行优先填充3x4矩阵
+            J[i*3 + 0] = (pos_plus[0] - current[0]) / delta;  // 第0行，第i列
+            J[i*3 + 1] = (pos_plus[1] - current[1]) / delta;  // 第1行，第i列
+            J[i*3 + 2] = (pos_plus[2] - current[2]) / delta;  // 第2行，第i列
         }
+
+        // 转置雅可比矩阵（3x4 -> 4x3）
+        arm_mat_trans_f32(&J_mat, &J_T_mat);
+
+        // 计算阻尼最小二乘解：delta_theta = (J^T*J + λI)^-1 * J^T * error
+        // 步骤1：计算J^T*J + λI
+        float JTJ[16] = {0}; // 4x4矩阵
+        arm_mat_mult_f32(&J_T_mat, &J_mat, &(arm_matrix_instance_f32){4,4,JTJ});
         
-        // 伪逆求解关节角调整量
-        float J_mat = {3, 4, (float *)J};
-        float J_pinv_mat;
-        float J_pinv[4][3];
-        arm_mat_init_f32(&J_pinv_mat, 4, 3, (float *)J_pinv);
+        // 添加阻尼项到对角线
+        JTJ[0]  += lambda;  // [0][0]
+        JTJ[5]  += lambda;  // [1][1]
+        JTJ[10] += lambda;  // [2][2]
+        JTJ[15] += lambda;  // [3][3]
+
+        // 步骤2：求逆矩阵
+        arm_matrix_instance_f32 JTJ_inv_mat;
+        float JTJ_inv[16];
+        arm_mat_init_f32(&JTJ_inv_mat, 4, 4, JTJ_inv);
+        arm_status inv_status = arm_mat_inverse_f32(&(arm_matrix_instance_f32){4,4,JTJ}, &JTJ_inv_mat);
         
-        arm_mat_pseudo_inverse_f32(&J_mat, &J_pinv_mat);
+        // 处理奇异矩阵情况
+        if (inv_status != ARM_MATH_SUCCESS) {
+            // 对角线添加微小扰动后重新求逆
+            JTJ[0] += 1e-4f; JTJ[5] += 1e-4f; 
+            JTJ[10] += 1e-4f; JTJ[15] += 1e-4f;
+            arm_mat_inverse_f32(&(arm_matrix_instance_f32){4,4,JTJ}, &JTJ_inv_mat);
+        }
+
+        // 步骤3：计算 delta_theta = JTJ_inv * J^T * error
+        float temp[3] = {0};
+        arm_matrix_instance_f32 temp_mat;
+        arm_mat_init_f32(&temp_mat, 4, 3, temp);
         
-        // 更新关节角度
-        float delta_theta[4];
-        arm_mat_vec_mult_f32(&J_pinv_mat, error, delta_theta);
-        
+        arm_mat_mult_f32(&JTJ_inv_mat, &J_T_mat, &temp_mat);
+        arm_mat_mult_f32(&temp_mat, &error_mat, &delta_theta_mat);
+
+        // 更新关节角度（应用约束）
         for (int i = 0; i < 4; i++) {
             joint_angles[i] += alpha * delta_theta[i];
+        }
+        constrain_angles(joint_angles);
+
+        // 调试输出（每10次迭代）
+        if (iter % 10 == 0) {
+            char debug_buff[200];
+            sprintf(debug_buff,"Iter %3d: error=%.4f, angles=[%7.2f, %7.2f, %7.2f, %7.2f] deg\n",
+                  iter, error_norm,
+                  joint_angles[0]*180/M_PI, 
+                  joint_angles[1]*180/M_PI,
+                  joint_angles[2]*180/M_PI,
+                  joint_angles[3]*180/M_PI);
+            HAL_UART_Transmit(&huart1, (uint8_t*)debug_buff, strlen(debug_buff), HAL_MAX_DELAY);
+            
+            // 首次迭代打印雅可比矩阵
+            if (iter == 0) {
+                sprintf(debug_buff, "Jacobian:\n");
+                for(int row=0; row<3; row++){
+                    sprintf(debug_buff+strlen(debug_buff), "[");
+                    for(int col=0; col<4; col++){
+                        sprintf(debug_buff+strlen(debug_buff), "%7.2f ", J[col*3 + row]);
+                    }
+                    sprintf(debug_buff+strlen(debug_buff), "]\n");
+                }
+                HAL_UART_Transmit(&huart1, (uint8_t*)debug_buff, strlen(debug_buff), HAL_MAX_DELAY);
+            }
         }
     }
 }

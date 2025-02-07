@@ -47,9 +47,14 @@ ctrboard-h7_all/bsp_arm.o: ..\Bsp\bsp_arm.c ..\Bsp\inc\bsp_arm.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
-  ..\Bsp\inc\can_bsp.h D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
-  ..\Bsp\go\motor_control.h ..\Bsp\go\ris_protocol.h \
-  ..\App\inc\motor_comm_task.h ..\Algorithm\inc\motor_pid.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Bsp\inc\can_bsp.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h ..\Bsp\go\motor_control.h \
+  ..\Bsp\go\ris_protocol.h ..\App\inc\motor_comm_task.h \
+  ..\Algorithm\inc\motor_pid.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \
@@ -64,12 +69,11 @@ ctrboard-h7_all/bsp_arm.o: ..\Bsp\bsp_arm.c ..\Bsp\inc\bsp_arm.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\Bsp\inc\ws2812.h D:\KEIL_539\ARM\ARMCLANG\include\string.h \
-  ..\Bsp\inc\bsp_power_enable.h ..\App\inc\imu_task.h \
-  ..\Algorithm\inc\user_lib.h ..\App\inc\safe_monitor_task.h \
-  ..\Core\Inc\adc.h ..\vofa+\vofa.h ..\Bsp\inc\bsp_user_key.h \
-  ..\Core\Inc\gpio.h ..\Bsp\inc\bsp_buzzer.h ..\Core\Inc\tim.h \
-  ..\Bsp\inc\bsp_ps2.h ..\Bsp\inc\BMI088Middleware.h \
+  ..\Bsp\inc\ws2812.h ..\Bsp\inc\bsp_power_enable.h \
+  ..\App\inc\imu_task.h ..\Algorithm\inc\user_lib.h \
+  ..\App\inc\safe_monitor_task.h ..\Core\Inc\adc.h ..\vofa+\vofa.h \
+  ..\Bsp\inc\bsp_user_key.h ..\Core\Inc\gpio.h ..\Bsp\inc\bsp_buzzer.h \
+  ..\Core\Inc\tim.h ..\Bsp\inc\bsp_ps2.h ..\Bsp\inc\BMI088Middleware.h \
   ..\App\inc\fun_test_task.h ..\Core\Inc\dma.h \
   ..\App\inc\kinematic_task.h ..\Core\Inc\usart.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \

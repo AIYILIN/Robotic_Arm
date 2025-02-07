@@ -47,7 +47,12 @@ ctrboard-h7_all/cybergear.o: ..\Bsp\cybergear.c ..\Bsp\inc\cybergear.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
-  ..\Bsp\inc\can_bsp.h D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Bsp\inc\can_bsp.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \
@@ -61,5 +66,4 @@ ctrboard-h7_all/cybergear.o: ..\Bsp\cybergear.c ..\Bsp\inc\cybergear.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\string.h
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h

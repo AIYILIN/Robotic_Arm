@@ -46,9 +46,13 @@ ctrboard-h7_all/go-m8010-6.o: ..\Bsp\go\GO-M8010-6.c ..\Core\Inc\usart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
-  ..\Bsp\go\motor_control.h ..\Bsp\go\ris_protocol.h \
-  ..\Bsp\go\crc_ccitt.h D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
-  ..\vofa+\vofa.h D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Bsp\go\motor_control.h \
+  ..\Bsp\go\ris_protocol.h ..\Bsp\go\crc_ccitt.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdio.h ..\vofa+\vofa.h \
   ..\Core\Inc\dma.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \

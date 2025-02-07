@@ -61,6 +61,10 @@ ctrboard-h7_all/fun_test_task.o: ..\App\fun_test_task.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h \
-  ..\Core\Inc\tim.h ..\Core\Inc\fdcan.h ..\Bsp\inc\ws2812.h \
-  ..\Bsp\inc\can_bsp.h D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\string.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\float.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Core\Inc\tim.h \
+  ..\Core\Inc\fdcan.h ..\Bsp\inc\ws2812.h ..\Bsp\inc\can_bsp.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h
