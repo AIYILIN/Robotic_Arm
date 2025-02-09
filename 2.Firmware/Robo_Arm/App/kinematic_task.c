@@ -5,8 +5,8 @@
 
 
 // 计算结果存储
-float angles[4] = {0,0,0,0};
-float position[3] = {200,200,300};
+float angles[6] = {0};
+float position[3] = {0,0,0};
 
 void KinematicsTask_Entry(void const * argument)
 {
@@ -26,15 +26,12 @@ void KinematicsTask_Entry(void const * argument)
   for(;;)
   {
 
-    // angles[0] = (-Motors.Motor3.Angle)/180.0f*M_PI;
-    // angles[1] = (go_rec2.Pos-JOINT_2_INIT_POS)/180.0f*M_PI;
-    // angles[2] = (-(go_rec3.Pos-JOINT_3_INIT_POS))/180.0f*M_PI;
-    // angles[3] = (-Motors.Motor1.Angle)/180.0f*M_PI;
 
-    // // // 计算正运动学
-    // forward_kinematics(angles, position);
+
+    // 计算正运动学
+    forward_kinematics(angles, position);
     // inverse_kinematics(position[0],position[1],position[2],angles);
-    ik_iterative(position, angles, 100);
+    // ik_iterative(position, angles, 100);
 
 
     // if(joints_init_flag == 0)

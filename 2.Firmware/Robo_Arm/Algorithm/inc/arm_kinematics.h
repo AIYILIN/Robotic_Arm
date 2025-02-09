@@ -30,16 +30,18 @@ typedef struct
 // 初始化DH参数
 static const DH_Link links[] = 
 {
-    { 0.0f,    0.0f,     M_PI_2,  0.0f    }, // L1
-    { 16.982f, 202.596f, 0.0f,    M_PI_2  }, // L2
-    { -33.7f,  211.366f, 0.0f,    0.0f    }, // L3
-    { 27.7f,   215.389f, M_PI_2,  0.0f    }  // L4
+    {  500.0f,   500.0f,   -M_PI_2,     0.0f }, // L1
+    {    0.0f,  1000.0f,      0.0f,  -M_PI_2 }, // L2
+    {    0.0f,   500.0f,   -M_PI_2,     0.0f }, // L3
+    { 1000.0f,     0.0f,    M_PI_2,     0.0f },  // L4
+    {    0.0f,     0.0f,   -M_PI_2,     0.0f }, // L5
+    { 1000.0f,     0.0f,      0.0f,     0.0f } // L6
 };
 
 
 extern void forward_kinematics(const float *joint_angles, float *end_effector_pose);// 正运动学计算函数
-extern int inverse_kinematics(float x, float y, float z, float theta[4]);// 逆运动学求解函数
-extern void ik_iterative(float target[3], float joint_angles[4], int max_iter);
+extern int inverse_kinematics(float x, float y, float z, float theta[6]);// 逆运动学求解函数
+extern void ik_iterative(float target[3], float joint_angles[6], int max_iter);
 
 extern float proj_x ; // 根据末端工具坐标修正
 extern float proj_y ;
