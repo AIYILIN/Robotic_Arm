@@ -217,6 +217,16 @@
           <WinNumber>2</WinNumber>
           <ItemText>joint_torque_limit</ItemText>
         </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>\\CtrBoard_H7_ALL\../App/kinematic_task.c\angles[5]</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>\\CtrBoard_H7_ALL\../App/kinematic_task.c\angles[3]</ItemText>
+        </Ww>
       </WatchWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>

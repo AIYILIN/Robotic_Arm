@@ -40,9 +40,53 @@ static Matrix4x4 dh_transform(float theta, const DH_Link *link)
     
     return T;
 }
+// ZYX欧拉角解算（Yaw-Pitch-Roll）
+static void rotation_to_zyx_euler(const Matrix4x4 *T, float* euler_deg) 
+{
+    /* 
+    输入：齐次变换矩阵（行主序）
+    输出：欧拉角数组[yaw, pitch, roll]（单位：度）
+    公式：R = Rz(yaw) * Ry(pitch) * Rx(roll)
+    */
+    
+    // 提取旋转矩阵元素
+    const float R11 = T->m[0][0], R12 = T->m[0][1], R13 = T->m[0][2];
+    const float R21 = T->m[1][0], R22 = T->m[1][1], R23 = T->m[1][2];
+    const float R31 = T->m[2][0], R32 = T->m[2][1], R33 = T->m[2][2];
+
+    // 计算Pitch（θ）并检测奇异点
+    const float pitch_rad = asinf(-R31); // pitch ∈ [-π/2, π/2]
+    const float cos_pitch = cosf(pitch_rad);
+    const float threshold = 1e-6f;
+
+    // 角度计算结果（弧度）
+    float yaw_rad, roll_rad;
+
+    if (fabsf(cos_pitch) > threshold) {
+        // 非奇异情况
+        yaw_rad = atan2f(R21, R11); // yaw ∈ [-π, π]
+        roll_rad = atan2f(R32, R33); // roll ∈ [-π, π]
+    } else {
+        // 奇异情况（cos_pitch ≈ 0，即pitch ≈ ±90°）
+        yaw_rad = atan2f(-R12, R22); 
+        roll_rad = 0.0f; // 固定Roll为0
+    }
+
+    // 转换为角度
+    const float RAD2DEG = 180.0f / M_PI;
+    euler_deg[0] = yaw_rad * RAD2DEG;   // Yaw
+    euler_deg[1] = pitch_rad * RAD2DEG; // Pitch
+    euler_deg[2] = roll_rad * RAD2DEG;  // Roll
+
+    // 角度规范化到[-180°, 180°]
+    for(int i=0; i<3; i++){
+        euler_deg[i] = fmodf(euler_deg[i] + 180.0f, 360.0f) - 180.0f;
+        if(fabsf(euler_deg[i]) < 0.001f) euler_deg[i] = 0.0f; // 消除-0.0
+    }
+}
 
 // 正运动学计算函数（输入关节角度数组，输出末端xyz）
-void forward_kinematics(const float *joint_angles, float *xyz) 
+void forward_kinematics(const float *joint_angles, float *xyzypr) 
 {
     Matrix4x4 T_total = {{
         {1,0,0,0},  // 初始化为单位矩阵
@@ -66,59 +110,17 @@ void forward_kinematics(const float *joint_angles, float *xyz)
     }
     
     // 提取末端位置（最后一列的前三个元素）
-    xyz[0] = T_total.m[0][3];
-    xyz[1] = T_total.m[1][3];
-    xyz[2] = T_total.m[2][3];
+    xyzypr[0] = T_total.m[0][3];
+    xyzypr[1] = T_total.m[1][3];
+    xyzypr[2] = T_total.m[2][3];
+
+    // 计算欧拉角（弧度）
+    float euler_rad[3];
+    rotation_to_zyx_euler(&T_total, euler_rad);
+
+    // 转换为角度并输出
+    const float RAD2DEG = 180.0f / M_PI;
+    xyzypr[3] = euler_rad[0]  ;  // Yaw
+    xyzypr[4] = euler_rad[1] ;  // Pitch
+    xyzypr[5] = euler_rad[2] ;  // Roll
 }
-
-
-
-
-
-// 逆运动学求解函数
-// 输入：目标位置(x, y, z)（单位：毫米）
-// 输出：关节角度theta[4]（单位：弧度，已包含offset）
-// 返回值：0-成功，-1-无解
-float proj_x = 0; // 根据末端工具坐标修正
-float proj_y = 0;
-int inverse_kinematics(float x, float y, float z, float theta[6]) 
-{
-    //--- 步骤1：计算关节1（theta1）---
-    // 投影到基座XY平面
-    proj_x = x - links[3].a * cosf(theta[3]); // 根据末端工具坐标修正
-    proj_y = y - links[3].a * sinf(theta[3]);
-    theta[0] = atan2f(proj_y, proj_x) - links[0].offset;
-
-    //--- 步骤2：计算关节2和3（theta2, theta3）---
-    // 转换为L2坐标系下的坐标
-    float x2 = proj_x * cosf(theta[0]) + proj_y * sinf(theta[0]) - links[1].a;
-    float z2 = z - links[0].d - links[1].d;
-    
-    // 解三角形（L2和L3构成平面二连杆）
-    float l2 = links[2].a;
-    float l3 = links[3].a;
-    float D = (x2*x2 + z2*z2 - l2*l2 - l3*l3) / (2*l2*l3);
-    
-    // 检查解的存在性
-    if (fabsf(D) > 1.0f) return -1; // 无解
-    
-    theta[2] = atan2f(sqrtf(1 - D*D), D); // 解1（肘部向上）
-    // theta[2] = atan2f(-sqrtf(1 - D*D), D); // 解2（肘部向下）
-    
-    theta[1] = atan2f(z2, x2) - atan2f(l3*sinf(theta[2]), l2 + l3*cosf(theta[2]));
-    theta[1] -= links[1].offset;
-
-    //--- 步骤3：计算关节4（theta4）---
-    // 根据姿态需求调整（此处假设末端垂直）
-    // theta[3] = - (theta[1] + theta[2]) - links[3].offset;
-    theta[3] = 0;
-
-    for (int i = 0; i < 4; i++)
-    {
-        theta[i] = theta[i] * 180.0f / M_PI;
-    }
-    
-
-    return 0;
-}
-

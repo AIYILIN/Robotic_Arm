@@ -6,7 +6,7 @@
 
 // ¼ÆËã½á¹û´æ´¢
 float angles[6] = {0};
-float position[3] = {0,0,0};
+float position[6] = {0};
 
 void KinematicsTask_Entry(void const * argument)
 {

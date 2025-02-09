@@ -1,19 +1,13 @@
 %%利用标准D-H法建立多轴机器人
 clear;
 clc;
-L1 = Link('offset',0,     'd', 500,        'a', 500,   'alpha', -pi/2);   
-L2 = Link('offset',-pi/2, 'd', 0,          'a', 1000,  'alpha', 0);
-L3 = Link('offset',0,     'd', 0,          'a', 500,   'alpha',  -pi/2);
-L4 = Link('offset',0,     'd', 1000,       'a', 0,     'alpha', pi/2);
+L1 = Link('offset',0,     'd', 50,        'a', 50,   'alpha', -pi/2);   
+L2 = Link('offset',-pi/2, 'd', 0,          'a', 100,  'alpha', 0);
+L3 = Link('offset',0,     'd', 0,          'a', 50,   'alpha',  -pi/2);
+L4 = Link('offset',0,     'd', 100,       'a', 0,     'alpha', pi/2);
 L5 = Link('offset',0,     'd', 0,          'a', 0,     'alpha', -pi/2);
-L6 = Link('offset',0,     'd', 1000,       'a', 0,     'alpha', 0);
+L6 = Link('offset',0,     'd', 100,       'a', 0,     'alpha', 0);
 
-% L1 = Link('offset',0,     'd', 500,        'a', 500,   'alpha', -pi/2);   
-% L2 = Link('offset',-pi/2, 'd', 0,          'a', 1000,  'alpha', 0);
-% L3 = Link('offset',0,     'd', 0,          'a', 500,   'alpha',  -pi/2);
-% L4 = Link('offset',0,     'd', 1000,       'a', 0,     'alpha', pi/2);
-% L5 = Link('offset',0,     'd', 0,          'a', 0,     'alpha', -pi/2);
-% L6 = Link('offset',0,     'd', 1000,       'a', 0,     'alpha', 0);
 
 L1.qlim = [-pi,pi];%利用qlim设置每个关节的旋转角度范围
 robot=SerialLink([L1,L2,L3,L4,L5,L6],'name','aiyilin');   %SerialLink 类函数
