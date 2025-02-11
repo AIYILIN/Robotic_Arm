@@ -10,20 +10,30 @@ L6 = Link('offset',0,     'd', 100,       'a', 0,     'alpha', 0);
 
 robot=SerialLink([L1,L2,L3,L4,L5,L6],'name','aiyilin');
 
-%% 计算正运动学并获取ZYX姿态
-q = [pi/6,pi/6,pi/6,pi/6,pi/6,pi/6]; % 关节角度（弧度）
-T = robot.fkine(q); % 计算变换矩阵
+%% 计算所有欧拉角表示形式
+q = [pi/6, pi/6, pi/6, pi/6, pi/6, pi/6]; % 关节角度（弧度）
+T = robot.fkine(q);                        % 计算变换矩阵
 
 % 提取位置（单位：毫米）
-position_mm = T.t ; % 假设DH参数单位为厘米
+position_mm = T.t; 
 
-% 提取ZYX欧拉角（单位：度）
-eul_zyx_deg = rotm2eul(T.R, 'ZYX') * 180/pi;
+% 定义所有欧拉角序列类型
+euler_sequences = {'ZYX', 'ZYZ', 'XYZ', 'ZXY', 'ZXZ',...
+                   'YXZ', 'YXY', 'YZX', 'YZY', 'XYX',...
+                   'XZY', 'XZX'};
 
+% 计算并显示所有欧拉角
 disp('末端位置(mm):');
 disp(position_mm');
-disp('ZYX欧拉角(Yaw-Pitch-Roll)(度):');
-disp(eul_zyx_deg);
+
+for i = 1:length(euler_sequences)
+    seq = euler_sequences{i};
+    eul_deg = rotm2eul(T.R, seq) * 180/pi;
+    
+    fprintf('%s 欧拉角 (度):\n', seq);
+    disp(eul_deg);
+end
+
 
 % %% 增强版示教界面（显示姿态信息）
 % teach(robot, 'eul', 'zyx'); % 在示教界面显示ZYX欧拉角
