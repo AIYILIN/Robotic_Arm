@@ -73,3 +73,5 @@ HAL_UARTEx_ReceiveToIdle(&huart2, (uint8_t *)rData, sizeof(rData->motor_recv_dat
 
 我使用的是freertos，得想个办法换成不堵塞，以免其他线程收到干扰。
 
+3、
+
