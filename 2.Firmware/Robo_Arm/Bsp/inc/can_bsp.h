@@ -3,7 +3,7 @@
 
 #include "main.h"
 #include "fdcan.h"
-
+#include <stdbool.h>
 /**
 ************************************************************************
 * @brief:      	FDCAN滤波器配置结构体
@@ -51,6 +51,7 @@ extern uint8_t FDCAN3_Rx_Data[8];
 ************************************************************************
 **/
 uint8_t FDCAN1_Send_Msg(uint8_t* msg, uint32_t len, uint32_t CAN_ID);
+uint8_t FDCAN3_Send_Msg(uint8_t* msg, uint32_t len, uint32_t CAN_ID);
 
 /**
 ************************************************************************
@@ -96,5 +97,28 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 void fdcan1_rx_callback(void);
 void fdcan2_rx_callback(void);
 void fdcan3_rx_callback(void);
+
+
+/**
+************************************************************************
+Emm V5 步进电机驱动
+************************************************************************
+**/
+
+extern void USER_CAN3_Filter_Init(void);
+extern void Emm_can_SendCmd(__IO uint8_t *cmd, uint8_t len);
+
+
+typedef struct {
+    FDCAN_RxHeaderTypeDef CAN_RxMsg;    // 移除 __IO
+    uint8_t rxData[64];                 // 移除 __IO
+    
+    FDCAN_TxHeaderTypeDef CAN_TxMsg;     // 移除 __IO
+    uint8_t txData[64];                 // 移除 __IO
+
+    bool rxFrameFlag;
+} CAN_t;
+
+extern CAN_t emm_can;  // 改为普通变量
 
 #endif /* __CAN_BSP_H__ */

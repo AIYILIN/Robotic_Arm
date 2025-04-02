@@ -8,6 +8,8 @@
 #include <string.h>
 #include "stm32h7xx_hal.h"
 #include <stdio.h>
+#include "Emm_V5_can.h"
+#include "bsp_buzzer.h"
 
 #define U1_RX_LEN   5
 #define U5_RX_LEN   5
@@ -44,6 +46,7 @@ void FunTest_Entry(void const * argument)
     HAL_UART_Receive_IT(&huart1, u1Rx, U1_RX_LEN);
     HAL_UART_Receive_IT(&huart7, u7Rx, U7_RX_LEN);
     HAL_UART_Receive_IT(&huart10, u10Rx, U10_RX_LEN);
+    osDelay(1000);
     
     /* Infinite loop */
     for(;;)
@@ -54,7 +57,15 @@ void FunTest_Entry(void const * argument)
             // DWT_DelayUS(1000000);
             // u1RxFlag = 0;
 //        }
-        osDelay(10);
+        
+        Emm_V5_Vel_Control_can(3, 1, 500, 0, 0);
+        // uint32_t Send_ID;
+        // uint8_t data[8]={0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08};
+        // Send_ID = 0x00<<24|0x00<<8|0x00;
+        // FDCAN3_Send_Msg(data,FDCAN_DLC_BYTES_8,Send_ID);
+        
+        // HAL_UART_Transmit(&huart1, (const uint8_t *)"U1 Test!\n", sizeof("U1 Test!\n")-1, 0xFFFF);
+        osDelay(100);
     }
     /* USER CODE END FunTest_Entry */
 }

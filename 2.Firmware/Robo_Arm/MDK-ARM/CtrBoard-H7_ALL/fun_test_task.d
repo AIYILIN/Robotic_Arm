@@ -67,4 +67,6 @@ ctrboard-h7_all/fun_test_task.o: ..\App\fun_test_task.c \
   D:\KEIL_539\ARM\ARMCLANG\include\float.h \
   D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Core\Inc\tim.h \
   ..\Core\Inc\fdcan.h ..\Bsp\inc\ws2812.h ..\Bsp\inc\can_bsp.h \
-  D:\KEIL_539\ARM\ARMCLANG\include\stdio.h
+  D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdio.h ..\Bsp\inc\Emm_V5_can.h \
+  ..\Bsp\inc\bsp_buzzer.h

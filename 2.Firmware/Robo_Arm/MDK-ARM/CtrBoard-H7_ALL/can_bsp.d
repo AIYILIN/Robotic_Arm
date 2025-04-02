@@ -51,5 +51,5 @@ ctrboard-h7_all/can_bsp.o: ..\Bsp\can_bsp.c ..\Bsp\inc\can_bsp.h \
   D:\KEIL_539\ARM\ARMCLANG\include\string.h \
   D:\KEIL_539\ARM\ARMCLANG\include\float.h \
   D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Core\Inc\fdcan.h \
-  ..\Bsp\inc\cybergear.h D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h ..\Bsp\inc\cybergear.h \
   ..\vofa+\vofa.h

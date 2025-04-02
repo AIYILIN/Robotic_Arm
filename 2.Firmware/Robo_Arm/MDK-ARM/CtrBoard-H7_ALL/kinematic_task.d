@@ -66,7 +66,7 @@ ctrboard-h7_all/kinematic_task.o: ..\App\kinematic_task.c \
   D:\KEIL_539\ARM\ARMCLANG\include\string.h \
   D:\KEIL_539\ARM\ARMCLANG\include\float.h \
   D:\KEIL_539\ARM\ARMCLANG\include\limits.h ..\Bsp\inc\can_bsp.h \
-  ..\Bsp\inc\cybergear.h D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
+  D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h ..\Bsp\inc\cybergear.h \
   ..\Algorithm\inc\motor_pid.h ..\Bsp\inc\bsp_user_key.h \
   ..\Core\Inc\gpio.h ..\App\inc\imu_task.h \
   ..\App\inc\safe_monitor_task.h ..\Core\Inc\adc.h ..\vofa+\vofa.h \
