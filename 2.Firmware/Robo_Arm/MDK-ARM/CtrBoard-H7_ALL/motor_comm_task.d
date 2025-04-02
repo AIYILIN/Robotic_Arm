@@ -76,4 +76,4 @@ ctrboard-h7_all/motor_comm_task.o: ..\App\motor_comm_task.c \
   ..\Bsp\go\ris_protocol.h ..\App\inc\kinematic_task.h \
   ..\Core\Inc\usart.h D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
   ..\Algorithm\inc\arm_kinematics.h ..\Bsp\inc\BMI088Middleware.h \
-  ..\App\inc\fun_test_task.h ..\Core\Inc\dma.h
+  ..\App\inc\fun_test_task.h ..\Core\Inc\dma.h ..\Bsp\inc\Emm_V5_can.h

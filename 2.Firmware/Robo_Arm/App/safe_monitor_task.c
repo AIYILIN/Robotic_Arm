@@ -11,12 +11,15 @@ SAFE_MONITOR joint_torque_limit =
     .joint_torque[0] = 0,
     .joint_torque[1] = 0,
     .joint_torque[2] = 0,
-    .joint_torque[3] = 0,
+    // .joint_torque[3] = 0,
+    .joint_torque[4] = 0,
 
-    .joint_torque_safelimit[0] = 0.8f,
-    .joint_torque_safelimit[1] = 0.8f,
-    .joint_torque_safelimit[2] = 0.8f,
-    .joint_torque_safelimit[3] = 0.8f,
+    .joint_torque_safelimit[0] = 2.8f,
+    .joint_torque_safelimit[1] = 2.8f,
+    .joint_torque_safelimit[2] = 2.8f,
+    .joint_torque_safelimit[3] = 2.8f,//
+    .joint_torque_safelimit[4] = 2.8f,
+    .joint_torque_safelimit[5] = 2.8f,//
 };
 
 
@@ -44,7 +47,8 @@ void SafeMonitorTask_Entry(void const * argument)
                 joint_T_profilel[0].pos_target = JOINT_1_INIT_POS;    //-3~3
                 joint_T_profilel[1].pos_target = JOINT_2_INIT_POS;    //-8~8
                 joint_T_profilel[2].pos_target = JOINT_3_INIT_POS;    //-4~14
-                joint_T_profilel[3].pos_target = JOINT_4_INIT_POS;    //-2.7~2.7
+                
+                joint_T_profilel[4].pos_target = JOINT_5_INIT_POS;    //-2.7~2.7
             }
         }
         vbus = (adc_val[0]*3.3f/65535)*11.0f;

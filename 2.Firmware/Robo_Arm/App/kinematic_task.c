@@ -20,7 +20,7 @@ void KinematicsTask_Entry(void const * argument)
   Arm_joint_init_para_set(arm_joint);
   joint_T_profilel_param_init(joint_T_profilel);
 
-  osDelay(6000);
+  osDelay(1000);
   Arm_joint_motion_para_set(arm_joint);
 
   for(;;)
@@ -39,7 +39,9 @@ void KinematicsTask_Entry(void const * argument)
       joint_T_profilel[0].pos_target = JOINT_1_INIT_POS-45;    
       joint_T_profilel[1].pos_target = JOINT_2_INIT_POS+30;    
       joint_T_profilel[2].pos_target = JOINT_3_INIT_POS-30;    
-      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS+45;    
+      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS+45;
+      joint_T_profilel[4].pos_target = JOINT_5_INIT_POS+45;    
+      joint_T_profilel[5].pos_target = JOINT_6_INIT_POS+45;
     }
       osDelay(5500);
     if(joints_init_flag == 0) 
@@ -47,7 +49,9 @@ void KinematicsTask_Entry(void const * argument)
       joint_T_profilel[0].pos_target = JOINT_1_INIT_POS+45;    
       joint_T_profilel[1].pos_target = JOINT_2_INIT_POS-30;    
       joint_T_profilel[2].pos_target = JOINT_3_INIT_POS+30;    
-      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS-45;    
+      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS-45;
+      joint_T_profilel[4].pos_target = JOINT_5_INIT_POS-45; 
+      joint_T_profilel[5].pos_target = JOINT_6_INIT_POS-45; 
     }
       osDelay(5500);
 
@@ -57,8 +61,10 @@ void KinematicsTask_Entry(void const * argument)
     {
       joint_T_profilel[0].pos_target = JOINT_1_INIT_POS;    
       joint_T_profilel[1].pos_target = JOINT_2_INIT_POS;   
-      joint_T_profilel[2].pos_target = JOINT_3_INIT_POS;    
-      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS;    
+      joint_T_profilel[2].pos_target = JOINT_3_INIT_POS;  
+      joint_T_profilel[3].pos_target = JOINT_4_INIT_POS;  
+      joint_T_profilel[4].pos_target = JOINT_5_INIT_POS;   
+      joint_T_profilel[5].pos_target = JOINT_6_INIT_POS;  
     }
 
     osDelay(10);

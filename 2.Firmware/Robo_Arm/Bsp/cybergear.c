@@ -103,16 +103,10 @@ void Init_Motor(MotorGroup *motors ,uint8_t Can_Id ,int motor_num,float mode)
 void Init_Motor_All(void)
 {
 	Init_Motor(&Motors,101,1,Speed_mode);
-	// Init_Motor(&Motors,102,2,Speed_mode);
 	Init_Motor(&Motors,103,3,Speed_mode);
-	// Init_Motor(&Motors,104,4,Speed_mode);
-	// Init_Motor(&Motors,105,5,Speed_mode);
-	// Init_Motor(&Motors,106,6,Speed_mode);
 
 	Set_ZeroPos(&Motors,1);
 	Set_ZeroPos(&Motors,3);
-
-
 }
 	
 

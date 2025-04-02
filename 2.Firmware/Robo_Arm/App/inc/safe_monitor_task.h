@@ -15,9 +15,9 @@
 
 typedef struct 
 {
-    float joint_torque[4];
+    float joint_torque[6];
 
-    float joint_torque_safelimit[4];
+    float joint_torque_safelimit[6];
 
 
 }SAFE_MONITOR;

@@ -58,7 +58,7 @@ void FunTest_Entry(void const * argument)
             // u1RxFlag = 0;
 //        }
         
-        Emm_V5_Vel_Control_can(3, 1, 500, 0, 0);
+        // Emm_V5_Vel_Control_can(3, 1, 500, 0, 0);
         // uint32_t Send_ID;
         // uint8_t data[8]={0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08};
         // Send_ID = 0x00<<24|0x00<<8|0x00;

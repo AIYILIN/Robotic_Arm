@@ -77,4 +77,4 @@ ctrboard-h7_all/bsp_arm.o: ..\Bsp\bsp_arm.c ..\Bsp\inc\bsp_arm.h \
   ..\App\inc\fun_test_task.h ..\Core\Inc\dma.h \
   ..\App\inc\kinematic_task.h ..\Core\Inc\usart.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h \
-  ..\Algorithm\inc\arm_kinematics.h
+  ..\Algorithm\inc\arm_kinematics.h ..\Bsp\inc\Emm_V5_can.h

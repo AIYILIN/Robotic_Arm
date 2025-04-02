@@ -2,7 +2,6 @@
 #define __KINEMATIC_TASK_H__
 
 #include "cmsis_os.h"
-#include "cmsis_os.h"
 #include "fdcan.h"
 #include "can_bsp.h"
 #include "cybergear.h"

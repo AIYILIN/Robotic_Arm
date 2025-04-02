@@ -1,5 +1,6 @@
 #include "bsp_arm.h"
 #include "vofa.h"
+#include "Emm_V5_can.h"
 
 ARM_JOINTS arm_joint[6];
 ARM_JOINT_ID arm_joint_id;
@@ -30,13 +31,29 @@ void Arm_joint_init_para_set(ARM_JOINTS arm_joint[6])
    arm_joint[2].kp = 0.3;
    arm_joint[2].kw = 0.22;
 
-   arm_joint[3].id = ARM_JOINT_4;
+   arm_joint[3].id = ARM_JOINT_4;//步进电机
    arm_joint[3].torque = 0;
-   arm_joint[3].pos = 0;    //-2.7~2.7
+   arm_joint[3].pos = 0;   
    arm_joint[3].w = 0;
-   arm_joint[3].kp = 0.3;
-   arm_joint[3].kw = 0.22;
+   arm_joint[3].kp = 0;
+   arm_joint[3].kw = 0;
 
+
+
+   arm_joint[4].id = ARM_JOINT_5;
+   arm_joint[4].torque = 0;
+   arm_joint[4].pos = 0;    //-2.7~2.7
+   arm_joint[4].w = 0;
+   arm_joint[4].kp = 0.3;
+   arm_joint[4].kw = 0.22;
+
+
+   arm_joint[5].id = ARM_JOINT_6;//步进电机
+   arm_joint[5].torque = 0;
+   arm_joint[5].pos = 0;   
+   arm_joint[5].w = 0;
+   arm_joint[5].kp = 0;
+   arm_joint[5].kw = 0;
 
 }
 
@@ -44,29 +61,35 @@ void Arm_joint_init_para_set(ARM_JOINTS arm_joint[6])
 void Arm_joint_motion_para_set(ARM_JOINTS arm_joint[6])
 {
 
-   arm_joint[0].kp = 0;
-   arm_joint[0].kw = 0;
+//    arm_joint[0].kp = 0;
+//    arm_joint[0].kw = 0;
 
-   arm_joint[1].kp = 0;
-   arm_joint[1].kw = 0;
+//    arm_joint[1].kp = 0;
+//    arm_joint[1].kw = 0;
 
-   arm_joint[2].kp = 0;
-   arm_joint[2].kw = 0;
+//    arm_joint[2].kp = 0;
+//    arm_joint[2].kw = 0;
+
+//    arm_joint[4].kp = 0;
+//    arm_joint[4].kw = 0;
+
+   arm_joint[0].kp = 20;
+   arm_joint[0].kw = 0.5;
+
+   arm_joint[1].kp = 6;
+   arm_joint[1].kw = 0.22;
+
+   arm_joint[2].kp = 6;
+   arm_joint[2].kw = 0.22;
 
    arm_joint[3].kp = 0;
    arm_joint[3].kw = 0;
 
-//    arm_joint[0].kp = 20;
-//    arm_joint[0].kw = 0.5;
+   arm_joint[4].kp = 20;
+   arm_joint[4].kw = 0.5;
 
-//    arm_joint[1].kp = 6;
-//    arm_joint[1].kw = 0.22;
-
-//    arm_joint[2].kp = 6;
-//    arm_joint[2].kw = 0.22;
-
-//    arm_joint[3].kp = 20;
-//    arm_joint[3].kw = 0.5;
+   arm_joint[5].kp = 0;
+   arm_joint[5].kw = 0;
 
 }
 
@@ -82,12 +105,23 @@ HAL_StatusTypeDef Arm_joints_control(ARM_JOINTS arm_joint[6])
                 Motion_Mode_Enable_Set(&Motors,3,arm_joint[i].torque,arm_joint[i].pos,arm_joint[i].w,arm_joint[i].kp,arm_joint[i].kw);
             }
             break;
-        case 4:
+        case 5:
             {
                 Motion_Mode_Enable_Set(&Motors,1,arm_joint[i].torque,arm_joint[i].pos,arm_joint[i].w,arm_joint[i].kp,arm_joint[i].kw);
             }
             break;
-        
+
+        case 4:
+            {
+                Emm_V5_Pos_Control_can(4,(arm_joint[3].pos > 0 ? 0 : 1),200,0,fabs(arm_joint[3].pos*3200/360.0*50),1,0);
+            }
+            break;
+        case 6:
+            {
+                // Emm_V5_Pos_Control_can(6,(arm_joint[5].pos > 0 ? 0 : 1),500,0,fabs(arm_joint[5].pos*3200/360.0),1,0);
+            }
+            break;
+
         case 2:
             {
                 go_cmd2.id = arm_joint[i].id;
@@ -121,6 +155,7 @@ HAL_StatusTypeDef Arm_joints_control(ARM_JOINTS arm_joint[6])
                 SERVO_Send_recv(&go_cmd3,&go_rec3);
             }
             break;
+
         default:
             break;
         }
@@ -133,17 +168,22 @@ HAL_StatusTypeDef Arm_joints_control(ARM_JOINTS arm_joint[6])
 
 void joint_T_profilel_param_init(T_Profile *profile)
 {
+
     joint_T_profilel[0].pos_current = JOINT_1_INIT_POS;
     joint_T_profilel[1].pos_current = JOINT_2_INIT_POS;
     joint_T_profilel[2].pos_current = JOINT_3_INIT_POS;
     joint_T_profilel[3].pos_current = JOINT_4_INIT_POS;
+    joint_T_profilel[4].pos_current = JOINT_5_INIT_POS;
+    joint_T_profilel[5].pos_current = JOINT_6_INIT_POS;
 
     joint_T_profilel[0].pos_target = JOINT_1_INIT_POS;    
     joint_T_profilel[1].pos_target = JOINT_2_INIT_POS;    
     joint_T_profilel[2].pos_target = JOINT_3_INIT_POS;    
     joint_T_profilel[3].pos_target = JOINT_4_INIT_POS;    
+    joint_T_profilel[4].pos_target = JOINT_5_INIT_POS;    
+    joint_T_profilel[5].pos_target = JOINT_6_INIT_POS;    
 
-    for (int i = 0; i < 6; i++) 
+    for (int i = 0; i < 3; i++) // 初始化前三个关节的参数
     {
         joint_T_profilel[i].vel_max = 50;    
         joint_T_profilel[i].acc_max = 20;
@@ -154,6 +194,32 @@ void joint_T_profilel_param_init(T_Profile *profile)
         joint_T_profilel[i].t_time_count = 0;
         joint_T_profilel[i].pos_target_last = 0;  
     }
+    // 减速步进电机
+    joint_T_profilel[3].vel_max = 100;    
+    joint_T_profilel[3].acc_max = 50;
+    joint_T_profilel[3].vel_cur = 0;
+    joint_T_profilel[3].vel_s_max = 0;
+    joint_T_profilel[3].t_time = 0;
+    joint_T_profilel[3].t_time_count = 0;
+    joint_T_profilel[3].pos_target_last = 0;  
+
+    // 小米电机
+    joint_T_profilel[4].vel_max = 50;    
+    joint_T_profilel[4].acc_max = 20;
+    joint_T_profilel[4].vel_cur = 0;
+    joint_T_profilel[4].vel_s_max = 0;
+    joint_T_profilel[4].t_time = 0;
+    joint_T_profilel[4].t_time_count = 0;
+    joint_T_profilel[4].pos_target_last = 0;  
+
+    // 步进电机
+    joint_T_profilel[5].vel_max = 100;    
+    joint_T_profilel[5].acc_max = 50;
+    joint_T_profilel[5].vel_cur = 0;
+    joint_T_profilel[5].vel_s_max = 0;
+    joint_T_profilel[5].t_time = 0;
+    joint_T_profilel[5].t_time_count = 0;
+    joint_T_profilel[5].pos_target_last = 0;  
         
 }
 

@@ -1,7 +1,7 @@
 #include "can_bsp.h"
 #include "cybergear.h"
 #include "vofa.h"
-
+#include "cmsis_os.h"
 
 FDCAN_FilterTypeDef sFilterConfig;
 FDCAN_TxHeaderTypeDef TxHeader;
@@ -333,7 +333,11 @@ void Emm_can_SendCmd(__IO uint8_t *cmd, uint8_t len)
         }
 
         // 发送数据（H7使用FIFO队列）
-        while(HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan3, &emm_can.CAN_TxMsg, emm_can.txData) != HAL_OK);
-        packNum++;
+        // while(HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan3, &emm_can.CAN_TxMsg, emm_can.txData) != HAL_OK)
+        // {
+        //     osDelay(1);  // 等待发送完成
+        // }
+        HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan3, &emm_can.CAN_TxMsg, emm_can.txData);
+        packNum++;  
     }
 }

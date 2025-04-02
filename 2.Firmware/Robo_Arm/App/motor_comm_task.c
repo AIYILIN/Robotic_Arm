@@ -1,7 +1,7 @@
 
 #include "motor_comm_task.h"
 
-
+#include "Emm_V5_can.h"
 
 
 
@@ -28,6 +28,8 @@ void MotorCommTask_Entry(void const * argument)
         }
         
         Arm_joints_control(arm_joint);
+        // Emm_V5_Vel_Control_can(4, 1, 100, 0, 0);
+        
         osDelay(1);
     }
 
