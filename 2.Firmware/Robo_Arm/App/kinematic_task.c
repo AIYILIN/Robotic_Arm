@@ -64,11 +64,10 @@ void KinematicsTask_Entry(void const * argument)
   {
 
     // 计算正运动学
-    // forward_kinematics(angles, position);
-    // inverse_kinematics(position[0],position[1],position[2],angles);
-    // ik_iterative(position, angles, 100);
-`
-    joints_move_text();
+    forward_kinematics(angles, position);
+
+
+    // joints_move_text();
 
     osDelay(10);
   }
