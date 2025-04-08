@@ -21,6 +21,6 @@
 #include "arm_kinematics.h"
 
 
-
+void joints_move_text(void);
 
 #endif

@@ -62,8 +62,11 @@ void SafeMonitorTask_Entry(void const * argument)
 }
 
 
-
-
+/**
+ * @brief 电机扭矩安全检测
+ * @param safe_monitor 安全检测结构体
+ * @return 无
+ */
 void motor_torque_Watchdog(SAFE_MONITOR *safe_monitor)
 {
     safe_monitor->joint_torque[0] = Motor3.Torque;

@@ -27,8 +27,8 @@ void MotorCommTask_Entry(void const * argument)
             arm_joint[i].pos = joint_T_profilel[i].pos_current;     // 使用平滑后的位置
         }
         
-        Arm_joints_control(arm_joint);
-        // Emm_V5_Vel_Control_can(4, 1, 100, 0, 0);
+        // Arm_joints_control(arm_joint);
+  
         
         osDelay(1);
     }

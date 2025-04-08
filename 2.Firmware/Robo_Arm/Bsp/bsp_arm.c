@@ -118,7 +118,7 @@ HAL_StatusTypeDef Arm_joints_control(ARM_JOINTS arm_joint[6])
             break;
         case 6:
             {
-                // Emm_V5_Pos_Control_can(6,(arm_joint[5].pos > 0 ? 0 : 1),500,0,fabs(arm_joint[5].pos*3200/360.0),1,0);
+                Emm_V5_Pos_Control_can(6,(arm_joint[5].pos > 0 ? 0 : 1),200,0,fabs(arm_joint[5].pos*3200/360.0),1,0);
             }
             break;
 
