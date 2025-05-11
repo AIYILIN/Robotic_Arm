@@ -11,6 +11,9 @@
 float fk_angle[6] = {0};
 float fk_pos_eul[6] = {0};
 
+
+
+
 void KinematicsTask_Entry(void const *argument)
 {
   /* USER CODE BEGIN KinematicsTask_Entry */
@@ -32,33 +35,27 @@ void KinematicsTask_Entry(void const *argument)
     // 计算正运动学
     forward_kinematics(fk_angle, fk_pos_eul);
 
-    Matrix4x4 target_pose = {
-      .m = {{ 0.1428  ,  0.9885   , 0.0497   , -30.9827},
-            { -0.8582  ,  0.1487  , -0.4912   , -5.4631},
-            { -0.4930  ,  0.0275   ,0.8696    ,380.5556},
-            {       0   ,      0   ,      0    ,1.0000}}
-  };
-  
-   char num_sols = inverse_kinematics(&target_pose, links, ik_solutions);
+    pose_and_xyzEulerAngles_to_matrix(&XYZ_euler_angles,&target_pose);
+    char num_sols = inverse_kinematics(&target_pose, &default_tool, links, ik_solutions);
+ 
+        // char debug_buf[1024];
+        // for (int i = 0; i < 8; i++) 
+        // {
+        //     // 使用固定宽度+符号对齐格式
+        //     snprintf(debug_buf, sizeof(debug_buf),
+        //         "SOL:%02d | J1:%10.2f | J2:%10.2f | J3:%10.2f | J4:%10.2f | J5:%10.2f | J6:%10.2f | V:%d\r\n",
+        //         i+1,
+        //         ik_solutions[i].angles[0],
+        //         ik_solutions[i].angles[1],
+        //         ik_solutions[i].angles[2],
+        //         ik_solutions[i].angles[3],
+        //         ik_solutions[i].angles[4],
+        //         ik_solutions[i].angles[5],
+        //         ik_solutions[i].valid);
 
-        char debug_buf[1024];
-        for (int i = 0; i < 8; i++) 
-        {
-            // 使用固定宽度+符号对齐格式
-            snprintf(debug_buf, sizeof(debug_buf),
-                "SOL:%02d | J1:%10.2f | J2:%10.2f | J3:%10.2f | J4:%10.2f | J5:%10.2f | J6:%10.2f | V:%d\r\n",
-                i+1,
-                ik_solutions[i].angles[0],
-                ik_solutions[i].angles[1],
-                ik_solutions[i].angles[2],
-                ik_solutions[i].angles[3],
-                ik_solutions[i].angles[4],
-                ik_solutions[i].angles[5],
-                ik_solutions[i].valid);
-
-            HAL_UART_Transmit(&huart1, (uint8_t*)debug_buf, strlen(debug_buf), 10);
-            osDelay(100);
-        }
+        //     HAL_UART_Transmit(&huart1, (uint8_t*)debug_buf, strlen(debug_buf), 10);
+        //     osDelay(100);
+        // }
 
     // 更新所有关节的轨迹
     for (int i = 0; i < 6; i++) 

@@ -7,8 +7,8 @@ L2 = Link('offset',pi/2,  'd', 0,      'a', 0,      'alpha', pi/2,  'modified');
 L3 = Link('offset',0,     'd', 0,      'a', 199.54, 'alpha', 0,     'modified');
 L4 = Link('offset',0,     'd', 171.53, 'a', 95.91,  'alpha', pi/2,  'modified');
 L5 = Link('offset',0,     'd', 0,      'a', 0,      'alpha', -pi/2, 'modified');
-L6 = Link('offset',0,     'd', 0,      'a',0,       'alpha', pi/2,  'modified');
-
+L6 = Link('offset',0,     'd', 168.51,      'a',0,       'alpha', pi/2,  'modified');
+% 168.51
 robot=SerialLink([L1,L2,L3,L4,L5,L6],'name','aiyilin');
 
 %% 机械臂变换矩阵验证（各关节零位）
@@ -28,7 +28,9 @@ disp('T6:'); disp(T6);
 
 %% 正运动学求解
 disp('======= 正运动学计算 =======');
+% q_deg = [20, 40, 60, 80, 100, 120];       % 输入：各关节角度(度)
 q_deg = [10, 20, 30, 40, 50, 60];       % 输入：各关节角度(度)
+% q_deg = [0, 0, 0, 0, 0, 0];       % 输入：各关节角度(度)
 q_rad = deg2rad(q_deg);                 % 转换为弧度
 T = robot.fkine(q_rad);                 % 正运动学计算
 disp('末端位姿矩阵：');
@@ -39,6 +41,8 @@ disp('末端位置（mm）:');
 disp(T.t');
 disp('末端旋转矩阵：');
 disp(T.R);
+disp('XYZ欧拉角(yaw-pitch-roll)：');
+disp(rotm2eul(T.R,"XYZ")*180/pi);
 
 
 %% 逆运动学求解示例

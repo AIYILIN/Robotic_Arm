@@ -25,6 +25,4 @@ extern void joints_move_text(void);
 void joints_precision_text(void);
 
 
-
-
 #endif

@@ -7,6 +7,46 @@
 #include "stdio.h"
 #include "cmsis_os.h"
 
+
+
+// 逆运动8组解声明
+IKSolution ik_solutions[MAX_IK_SOLUTIONS];
+//x,y,z,yaw, pitch, roll
+// XYZ_EulerAngles XYZ_euler_angles={-203.2699 ,-247.9015 , 271.3051, 101.8249 ,  11.6415 ,  37.6341};//20,40,60,80,100,120
+XYZ_EulerAngles XYZ_euler_angles={-22.608, -88.241, 527.093, 29.5, 2.8488  ,-81.7780};//10,20,30,40,50,60
+
+
+ToolParams default_tool = {
+  .offset = {0.0f, 0.0f, 168.51f},  // 工具坐标系下腕部中心的偏移量(mm)
+  .mass = 210.0f                 // 工具质量（g）
+};
+
+//10 20 30 40 50 60
+// Matrix4x4 target_pose = {
+//       .m = {{ 0.1428  ,  0.9885   , 0.0497   , -30.9827},
+//             { -0.8582  ,  0.1487  , -0.4912   , -5.4631},
+//             { -0.4930  ,  0.0275   ,0.8696    ,380.5556 + 500},
+//             {       0   ,      0   ,      0    ,1.0000}}
+//   };
+
+
+  //10 20 30 40 50 60 加d
+// Matrix4x4 target_pose = {
+//       .m = {{ 0.1428  ,  0.9885   , 0.0497   , -6.1327},
+//             { -0.8582  ,  0.1487  , -0.4912   , -251.0814},
+//             { -0.4930  ,  0.0275   ,0.8696    , 815.3592},
+//             {       0   ,      0   ,      0    ,1.0000}}
+//   };
+
+// 0 0 0 0 0 0
+Matrix4x4 target_pose = {
+      .m = {{ 0.0000   ,-0.0000   , 1.0000 , 0},
+            { 0.0000   ,-1.0000   ,-0.0000  , 0.0000},
+            { 1.0000   , 0.0000   ,-0.0000 , 0},
+            {      0        , 0      ,   0   ,1.0000}}
+  };
+
+
 // 矩阵乘法函数（A * B）
 static void matrix_multiply(Matrix4x4 *result, const Matrix4x4 *a, const Matrix4x4 *b)
 {
@@ -49,59 +89,28 @@ static Matrix4x4 dh_transform(float theta, const DH_Link *link)
     float sa = sinf(link->alpha);
 
     // 改进型型变换矩阵
-    T.m[0][0] = ct;
-    T.m[0][1] = -st;
-    T.m[0][2] = 0;
-    T.m[0][3] = link->a;
-
-    T.m[1][0] = st * ca;
-    T.m[1][1] = ct * ca;
-    T.m[1][2] = -sa;
-    T.m[1][3] = -link->d * sa;
-
-    T.m[2][0] = st * sa;
-    T.m[2][1] = ct * sa;
-    T.m[2][2] = ca;
-    T.m[2][3] = link->d * ca;
-
-    T.m[3][0] = 0.0f;
-    T.m[3][1] = 0.0f;
-    T.m[3][2] = 0.0f;
-    T.m[3][3] = 1.0f;
+    T.m[0][0] = ct;         T.m[0][1] = -st;        T.m[0][2] = 0;      T.m[0][3] = link->a;
+    T.m[1][0] = st * ca;    T.m[1][1] = ct * ca;    T.m[1][2] = -sa;    T.m[1][3] = -link->d * sa;
+    T.m[2][0] = st * sa;    T.m[2][1] = ct * sa;    T.m[2][2] = ca;     T.m[2][3] = link->d * ca;
+    T.m[3][0] = 0.0f;       T.m[3][1] = 0.0f;       T.m[3][2] = 0.0f;   T.m[3][3] = 1.0f;
 
     // // 标准型变换矩阵
-    // T.m[0][0] = ct;
-    // T.m[0][1] = -st * ca;
-    // T.m[0][2] = st * sa;
-    // T.m[0][3] = link->a * ct;
-
-    // T.m[1][0] = st;
-    // T.m[1][1] = ct * ca;
-    // T.m[1][2] = -ct * sa;
-    // T.m[1][3] = link->a * st;
-
-    // T.m[2][0] = 0.0f;
-    // T.m[2][1] = sa;
-    // T.m[2][2] = ca;
-    // T.m[2][3] = link->d;
-
-    // T.m[3][0] = 0.0f;
-    // T.m[3][1] = 0.0f;
-    // T.m[3][2] = 0.0f;
-    // T.m[3][3] = 1.0f;
+    // T.m[0][0] = ct;     T.m[0][1] = -st * ca;       T.m[0][2] = st * sa;    T.m[0][3] = link->a * ct;
+    // T.m[1][0] = st;     T.m[1][1] = ct * ca;        T.m[1][2] = -ct * sa;   T.m[1][3] = link->a * st;
+    // T.m[2][0] = 0.0f;   T.m[2][1] = sa;             T.m[2][2] = ca;         T.m[2][3] = link->d;
+    // T.m[3][0] = 0.0f;   T.m[3][1] = 0.0f;           T.m[3][2] = 0.0f;       T.m[3][3] = 1.0f;
 
     return T;
 }
 
-// XYZ欧拉角解算（Yaw-Pitch-Roll）
+
+/*
+输入：齐次变换矩阵（行主序）
+输出：欧拉角数组[roll, pitch, yaw]（单位：度）
+公式：R = Rx(roll) * Ry(pitch) * Rz(yaw)
+*/
 static void rotation_to_xyz_euler(const Matrix4x4 *T, float *euler_deg)
 {
-    /*
-    输入：齐次变换矩阵（行主序）
-    输出：欧拉角数组[roll, pitch, yaw]（单位：度）
-    公式：R = Rx(roll) * Ry(pitch) * Rz(yaw)
-    */
-
     // 提取旋转矩阵元素
     const float R11 = T->m[0][0], R12 = T->m[0][1], R13 = T->m[0][2];
     const float R21 = T->m[1][0], R22 = T->m[1][1], R23 = T->m[1][2];
@@ -143,14 +152,14 @@ static void rotation_to_xyz_euler(const Matrix4x4 *T, float *euler_deg)
     }
 }
 
-// ZYX欧拉角解算（Yaw-Pitch-Roll）
+/*
+输入：齐次变换矩阵（行主序）
+输出：欧拉角数组[yaw, pitch, roll]（单位：度）
+公式：R = Rz(yaw) * Ry(pitch) * Rx(roll)
+*/
 static void rotation_to_zyx_euler(const Matrix4x4 *T, float *euler_deg)
 {
-    /*
-    输入：齐次变换矩阵（行主序）
-    输出：欧拉角数组[yaw, pitch, roll]（单位：度）
-    公式：R = Rz(yaw) * Ry(pitch) * Rx(roll)
-    */
+
 
     // 提取旋转矩阵元素
     const float R11 = T->m[0][0], R12 = T->m[0][1], R13 = T->m[0][2];
@@ -193,6 +202,22 @@ static void rotation_to_zyx_euler(const Matrix4x4 *T, float *euler_deg)
     }
 }
 
+
+
+// 从4x4齐次矩阵中提取3x3旋转部分
+static void extract_rotation_matrix(Matrix3x3 *dst, const Matrix4x4 *src)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            dst->m3x3[i][j] = src->m[i][j];
+        }
+    }
+}
+
+
+
 // 正运动学计算函数（输入关节角度数组，输出末端xyz）
 void forward_kinematics(const float *joint_angles, float *xyzypr)
 {
@@ -232,21 +257,10 @@ void forward_kinematics(const float *joint_angles, float *xyzypr)
     xyzypr[5] = euler_rad[2]; // Roll
 }
 
-// 从4x4齐次矩阵中提取3x3旋转部分
-static void extract_rotation_matrix(Matrix3x3 *dst, const Matrix4x4 *src)
-{
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            dst->m3x3[i][j] = src->m[i][j];
-        }
-    }
-}
 
-IKSolution ik_solutions[MAX_IK_SOLUTIONS];
 
-// 私有函数声明
+
+// 逆运动私有函数声明
 static void calculate_theta3(const float p[3], const DH_Link *links, float theta3[2]);
 static void calculate_theta2(float g3, const float f[3], float alpha2, float theta2[2]);
 static void equation_cal(float m, float n, float e, float solutions[2][2]);
@@ -254,10 +268,26 @@ static float calculate_theta1(const float p[3], const float f[3], float theta2, 
 static void calculate_theta456(float theta1, float theta2, float theta3, const Matrix3x3 *R06, const DH_Link *links, float theta456[2][3], uint8_t *num_sols);
 static Matrix3x3 dh_rotation_matrix_3x3(float theta, float alpha);
 
+
+Vector3 wrist_center;
+Matrix3x3 R_tool;
+
 // 逆运动学主函数
-uint8_t inverse_kinematics(const Matrix4x4 *T_target, const DH_Link *links, IKSolution *solutions)
+uint8_t inverse_kinematics(const Matrix4x4 *T_target, const ToolParams *tool, const DH_Link *links, IKSolution *solutions)
 {
-    float p[3] = {T_target->m[0][3], T_target->m[1][3], T_target->m[2][3]};
+
+
+    // Step 1: 计算腕部中心位置（考虑工具偏移）
+    Vector3 tool_center = {T_target->m[0][3], T_target->m[1][3], T_target->m[2][3]};
+
+    
+    extract_rotation_matrix(&R_tool, T_target);
+    calculate_wrist_center(&tool_center, &R_tool, tool, &wrist_center);
+
+    float p[3] = {wrist_center.x, wrist_center.y, wrist_center.z};
+
+
+    // float p[3] = {T_target->m[0][3], T_target->m[1][3], T_target->m[2][3]};
     float theta3[2];
     calculate_theta3(p, links, theta3);
 
@@ -501,7 +531,6 @@ static void calculate_theta456(float theta1, float theta2, float theta3,
     }
 }
 
-// 新的dh_rotation_matrix函数
 static Matrix3x3 dh_rotation_matrix_3x3(float theta, float alpha)
 {
     Matrix3x3 R;
@@ -519,7 +548,7 @@ static Matrix3x3 dh_rotation_matrix_3x3(float theta, float alpha)
 
 
 
-// 打印函数实现
+// 打印3x3矩阵的函数实现
 void print_matrix_3x3(const char* name, const Matrix3x3* mat) 
 {
     char buf[64];
@@ -531,4 +560,115 @@ void print_matrix_3x3(const char* name, const Matrix3x3* mat)
                 mat->m3x3[i][0], mat->m3x3[i][1], mat->m3x3[i][2]);
         HAL_UART_Transmit(&huart1, (uint8_t*)buf, strlen(buf), 100);
     }
+}
+
+
+// 新的3x3矩阵转置函数
+void matrix_transpose_3x3(Matrix3x3* result, const Matrix3x3* src) 
+{
+    for(int i=0; i<3; i++) {
+        for(int j=0; j<3; j++) {
+            result->m3x3[i][j] = src->m3x3[j][i];
+        }
+    }
+}
+
+
+/**
+ * @brief 计算腕部中心点位置（考虑工具偏移）
+ * @param end_effector_pos 末端执行器的目标位置（基坐标系）
+ * @param R_end_effector 末端执行器的旋转矩阵（基坐标系）
+ * @param tool 工具参数（包含工具坐标系下的偏移量）
+ * @param wrist_center 输出的腕部中心位置（基坐标系）
+ */
+void calculate_wrist_center(const Vector3 *end_effector_pos, const Matrix3x3 *R_end_effector, const ToolParams *tool, Vector3 *wrist_center) 
+{
+    // 将工具偏移量从工具坐标系转换到基坐标系
+    Vector3 tool_offset_base = 
+    {
+        R_end_effector->m3x3[0][0] * tool->offset.x + R_end_effector->m3x3[0][1] * tool->offset.y + R_end_effector->m3x3[0][2] * tool->offset.z,
+        R_end_effector->m3x3[1][0] * tool->offset.x + R_end_effector->m3x3[1][1] * tool->offset.y + R_end_effector->m3x3[1][2] * tool->offset.z,
+        R_end_effector->m3x3[2][0] * tool->offset.x + R_end_effector->m3x3[2][1] * tool->offset.y + R_end_effector->m3x3[2][2] * tool->offset.z
+    };
+
+    // 计算腕部中心位置
+    wrist_center->x = end_effector_pos->x - tool_offset_base.x;
+    wrist_center->y = end_effector_pos->y - tool_offset_base.y;
+    wrist_center->z = end_effector_pos->z - tool_offset_base.z;
+}
+
+
+Matrix4x4* pose_and_xyzEulerAngles_to_matrix(XYZ_EulerAngles *euler, Matrix4x4 *T)//注意：这里的欧拉角转换公式有问题！！！，后续换一步到位的矩阵！！！
+{
+    // Step 1: 初始化矩阵为单位矩阵
+    memset(T, 0, sizeof(Matrix4x4));
+    T->m[3][3] = 1.0f;
+
+    // Step 2: 角度转弧度
+    const float roll_rad  = euler->yaw * M_PI / 180.0f;             //注意：这里的欧拉角转换公式有问题！！！，后续换一步到位的矩阵！！！
+    const float pitch_rad = euler->pitch * M_PI / 180.0f;           //注意：这里的欧拉角转换公式有问题！！！，后续换一步到位的矩阵！！！
+    const float yaw_rad   = euler->roll   * M_PI / 180.0f;          //注意：这里的欧拉角转换公式有问题！！！，后续换一步到位的矩阵！！！
+
+    // Step 3: 计算各轴旋转矩阵
+    // X轴旋转矩阵（Roll）
+    const float cr = cosf(roll_rad), sr = sinf(roll_rad);
+    const float Rx[3][3] = {
+        {1,  0,    0   },
+        {0,  cr, -sr  },
+        {0,  sr,  cr  }
+    };
+
+    // Y轴旋转矩阵（Pitch）
+    const float cp = cosf(pitch_rad), sp = sinf(pitch_rad);
+    const float Ry[3][3] = {
+        { cp,  0,  sp },
+        { 0,   1,  0 },
+        {-sp,  0,  cp }
+    };
+
+    // Z轴旋转矩阵（Yaw）
+    const float cy = cosf(yaw_rad), sy = sinf(yaw_rad);
+    const float Rz[3][3] = {
+        {cy, -sy, 0 },
+        {sy,  cy, 0 },
+        {0,   0,  1 }
+    };
+
+    // Step 4: 合并旋转矩阵 R = Rx * Ry * Rz
+    float temp[3][3], R[3][3];
+    
+    // 先计算Ry * Rz
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            temp[i][j] = 0.0f;
+            for (int k = 0; k < 3; ++k) {
+                temp[i][j] += Ry[i][k] * Rz[k][j];
+            }
+        }
+    }
+    
+    // 再计算Rx * (Ry * Rz)
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            R[i][j] = 0.0f;
+            for (int k = 0; k < 3; ++k) {
+                R[i][j] += Rx[i][k] * temp[k][j];
+            }
+        }
+    }
+
+    // Step 5: 填充矩阵
+    // 旋转部分
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            T->m[i][j] = R[i][j];
+        }
+    }
+    
+    // 平移部分
+    T->m[0][3] = euler->x;
+    T->m[1][3] = euler->y;
+    T->m[2][3] = euler->z;
+
+    return T;
 }
