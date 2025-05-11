@@ -8,7 +8,16 @@ L4 = Link('offset',0,     'd', 171.44,     'a', 0,      'alpha', pi/2);
 L5 = Link('offset',0,     'd', 0,          'a', 0,      'alpha', -pi/2);
 L6 = Link('offset',0,     'd', 168.51,     'a', 0,      'alpha', 0);
 
-L1.qlim = [-pi,pi];%利用qlim设置每个关节的旋转角度范围
+
+% L1 = Link('offset',0,     'd', 120.71,     'a', 0,      'alpha', -pi/2);   
+% L2 = Link('offset',-pi/2, 'd', 0,          'a', 196.54, 'alpha', 0);
+% L3 = Link('offset',pi/2,  'd', 0,          'a', 96.11,  'alpha',  pi/2);
+% L4 = Link('offset',0,     'd', 171.44,     'a', 0,      'alpha', -pi/2);
+% L5 = Link('offset',0,     'd', 0,          'a', 0,      'alpha', pi/2);
+% L6 = Link('offset',0,     'd', 168.51,     'a', 0,      'alpha', 0);
+
+
+
 robot=SerialLink([L1,L2,L3,L4,L5,L6],'name','aiyilin');   %SerialLink 类函数
 T1 = robot.links(1).A(0);
 T2 = robot.links(2).A(0);

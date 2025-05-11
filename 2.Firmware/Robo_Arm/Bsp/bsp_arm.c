@@ -44,7 +44,7 @@ void Arm_joint_init_para_set(ARM_JOINTS arm_joint[6])
    arm_joint[4].torque = 0;
    arm_joint[4].pos = 0;    //-2.7~2.7
    arm_joint[4].w = 0;
-   arm_joint[4].kp = 0.3;
+   arm_joint[4].kp = 2;
    arm_joint[4].kw = 0.22;
 
 
@@ -82,14 +82,14 @@ void Arm_joint_motion_para_set(ARM_JOINTS arm_joint[6])
    arm_joint[2].kp = 6;
    arm_joint[2].kw = 0.22;
 
-   arm_joint[3].kp = 0;
-   arm_joint[3].kw = 0;
+//    arm_joint[3].kp = 0;
+//    arm_joint[3].kw = 0;
 
-   arm_joint[4].kp = 20;
+   arm_joint[4].kp = 32;
    arm_joint[4].kw = 0.5;
 
-   arm_joint[5].kp = 0;
-   arm_joint[5].kw = 0;
+//    arm_joint[5].kp = 0;
+//    arm_joint[5].kw = 0;
 
 }
 

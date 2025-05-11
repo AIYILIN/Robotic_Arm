@@ -232,13 +232,13 @@ int main(void)
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
-  MX_USART3_UART_Init();
   MX_UART7_Init();
   MX_USART10_UART_Init();
   MX_FDCAN1_Init();
   MX_FDCAN2_Init();
   MX_FDCAN3_Init();
   MX_OCTOSPI2_Init();
+  MX_UART9_Init();
   /* USER CODE BEGIN 2 */
 //    OSPI_W25Qxx_Init();     // ≥ı ºªØOSPI∫ÕW25Q64
 //    

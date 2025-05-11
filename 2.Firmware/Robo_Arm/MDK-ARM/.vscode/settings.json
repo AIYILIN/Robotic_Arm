@@ -43,6 +43,7 @@
         "motor_comm_task.h": "c",
         "kinematic_task.h": "c",
         "safe_monitor_task.h": "c",
-        "emm_v5_can.h": "c"
+        "emm_v5_can.h": "c",
+        "6dof_kinematic.h": "c"
     }
 }

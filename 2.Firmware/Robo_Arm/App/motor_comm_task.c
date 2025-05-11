@@ -1,8 +1,6 @@
 
 #include "motor_comm_task.h"
-
 #include "Emm_V5_can.h"
-
 
 
 
@@ -15,21 +13,10 @@ void MotorCommTask_Entry(void const * argument)
 
     for (;;) 
     {
-        // 更新所有关节的轨迹
-        for (int i = 0; i < 6; i++) 
-        {
-            Update_T_Profile(&joint_T_profilel[i], 0.003f);  // dt=5ms  
-        }   
 
-
-        for (int i = 0; i < 6; i++) 
-        {
-            arm_joint[i].pos = joint_T_profilel[i].pos_current;     // 使用平滑后的位置
-        }
         
         // Arm_joints_control(arm_joint);
-  
-        
+
         osDelay(1);
     }
 

@@ -185,6 +185,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>\\CtrBoard_H7_ALL\../App/safe_monitor_task.c\joint_torque_limit</ItemText>
         </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>solutions</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -205,17 +210,27 @@
         <Ww>
           <count>3</count>
           <WinNumber>2</WinNumber>
-          <ItemText>angles</ItemText>
+          <ItemText>joint_torque_limit</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>2</WinNumber>
-          <ItemText>position</ItemText>
+          <ItemText>\\CtrBoard_H7_ALL\../Bsp/bsp_arm.c\joint_T_profilel[1].pos_target</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>2</WinNumber>
-          <ItemText>joint_torque_limit</ItemText>
+          <ItemText>ik_solutions</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>fk_angle</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>fk_pos_eul</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>
@@ -1445,6 +1460,30 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Algorithm\arm_kinematics.c</PathWithFileName>
       <FilenameWithoutPath>arm_kinematics.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>92</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Algorithm\6dof_kinematic.cpp</PathWithFileName>
+      <FilenameWithoutPath>6dof_kinematic.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>93</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Algorithm\dof6_c_interface.cpp</PathWithFileName>
+      <FilenameWithoutPath>dof6_c_interface.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
