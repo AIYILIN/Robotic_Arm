@@ -69,4 +69,12 @@ ctrboard-h7_all/fun_test_task.o: ..\App\fun_test_task.c \
   ..\Core\Inc\fdcan.h ..\Bsp\inc\ws2812.h ..\Bsp\inc\can_bsp.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdbool.h \
   D:\KEIL_539\ARM\ARMCLANG\include\stdio.h ..\Bsp\inc\Emm_V5_can.h \
-  ..\Bsp\inc\bsp_buzzer.h
+  ..\Bsp\inc\bsp_buzzer.h ..\App\inc\kinematic_task.h \
+  ..\Bsp\inc\cybergear.h ..\Algorithm\inc\motor_pid.h \
+  ..\Bsp\inc\bsp_user_key.h ..\Core\Inc\gpio.h ..\App\inc\imu_task.h \
+  ..\App\inc\safe_monitor_task.h ..\Core\Inc\adc.h ..\vofa+\vofa.h \
+  ..\Bsp\inc\bsp_ps2.h ..\Bsp\inc\bsp_arm.h ..\Bsp\go\motor_control.h \
+  ..\Bsp\go\ris_protocol.h ..\App\inc\motor_comm_task.h \
+  ..\Bsp\inc\bsp_power_enable.h ..\Algorithm\inc\user_lib.h \
+  ..\Bsp\inc\BMI088Middleware.h ..\Core\Inc\dma.h \
+  ..\Algorithm\inc\arm_kinematics.h

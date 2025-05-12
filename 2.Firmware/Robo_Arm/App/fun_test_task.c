@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "Emm_V5_can.h"
 #include "bsp_buzzer.h"
+#include "kinematic_task.h"
 
 #define U1_RX_LEN   5
 #define U5_RX_LEN   5
@@ -65,6 +66,10 @@ void FunTest_Entry(void const * argument)
         // FDCAN3_Send_Msg(data,FDCAN_DLC_BYTES_8,Send_ID);
         
         // HAL_UART_Transmit(&huart1, (const uint8_t *)"U1 Test!\n", sizeof("U1 Test!\n")-1, 0xFFFF);
+
+
+        // joints_move_text();//电机角度设定的函数，每隔几秒变换一次，用作测试。
+        joints_euler_move_text();//电机角度设定的函数，每隔几秒变换一次，用作测试。
         osDelay(100);
     }
     /* USER CODE END FunTest_Entry */

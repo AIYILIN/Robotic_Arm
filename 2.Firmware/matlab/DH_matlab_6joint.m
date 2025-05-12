@@ -1,24 +1,18 @@
-%%利用标准D-H法建立多轴机器人
+%% 利用标准D-H法建立多轴机器人
 clear;
 clc;
-L1 = Link('offset',0,     'd', 120.71,     'a', 0,      'alpha', -pi/2);   
-L2 = Link('offset',-pi/2, 'd', 0,          'a', 196.54, 'alpha', 0);
-L3 = Link('offset',0,     'd', 0,          'a', 96.11,  'alpha',  -pi/2);
-L4 = Link('offset',0,     'd', 171.44,     'a', 0,      'alpha', pi/2);
-L5 = Link('offset',0,     'd', 0,          'a', 0,      'alpha', -pi/2);
-L6 = Link('offset',0,     'd', 168.51,     'a', 0,      'alpha', 0);
+% DH参数定义（重点检查L2的a参数是否正确）
+L1 = Link('offset',0,     'd', 0,      'a', 0,      'alpha', 0,     'modified');   
+L2 = Link('offset',pi/2,  'd', 0,      'a', 0,      'alpha', pi/2,  'modified');  
+L3 = Link('offset',0,     'd', 0,      'a', 199.54, 'alpha', 0,     'modified');
+L4 = Link('offset',0,     'd', 171.53, 'a', 95.91,  'alpha', pi/2,  'modified');
+L5 = Link('offset',0,     'd', 0,      'a', 0,      'alpha', -pi/2, 'modified');
+L6 = Link('offset',0,     'd', 168.51,      'a',0,       'alpha', pi/2,  'modified');
+% 168.51
+robot=SerialLink([L1,L2,L3,L4,L5,L6],'name','aiyilin');
 
-
-% L1 = Link('offset',0,     'd', 120.71,     'a', 0,      'alpha', -pi/2);   
-% L2 = Link('offset',-pi/2, 'd', 0,          'a', 196.54, 'alpha', 0);
-% L3 = Link('offset',pi/2,  'd', 0,          'a', 96.11,  'alpha',  pi/2);
-% L4 = Link('offset',0,     'd', 171.44,     'a', 0,      'alpha', -pi/2);
-% L5 = Link('offset',0,     'd', 0,          'a', 0,      'alpha', pi/2);
-% L6 = Link('offset',0,     'd', 168.51,     'a', 0,      'alpha', 0);
-
-
-
-robot=SerialLink([L1,L2,L3,L4,L5,L6],'name','aiyilin');   %SerialLink 类函数
+%% 机械臂变换矩阵验证（各关节零位）
+disp('======= 各关节零位齐次变换矩阵 =======');
 T1 = robot.links(1).A(0);
 T2 = robot.links(2).A(0);
 T3 = robot.links(3).A(0);
@@ -32,39 +26,57 @@ disp('T4:'); disp(T4);
 disp('T5:'); disp(T5);
 disp('T6:'); disp(T6);
 
+%% 正运动学求解
+disp('======= 正运动学计算 =======');
+% q_deg = [20, 40, 60, 80, 100, 120];       % 输入：各关节角度(度)
+q_deg = [10, 20, 30, 40, 50, 60];       % 输入：各关节角度(度)
+% q_deg = [0, 0, 0, 0, 0, 0];       % 输入：各关节角度(度)
+q_rad = deg2rad(q_deg);                 % 转换为弧度
+T = robot.fkine(q_rad);                 % 正运动学计算
+disp('末端位姿矩阵：');
+disp(T.T);                              % 显示齐次变换矩阵
 
-%% 普通机器人的示教展示
+% 分解显示位置和姿态
+disp('末端位置（mm）:');
+disp(T.t');
+disp('末端旋转矩阵：');
+disp(T.R);
+disp('XYZ欧拉角(yaw-pitch-roll)：');
+disp(rotm2eul(T.R,"XYZ")*180/pi);
 
-robot.display();%展示出机器人的信息
-teach(robot);%调出示教滑块
-% 
-% % MATLAB验证代码
-% target = [200 200 300]; % 同C代码中的目标
-% q_ik = robot.ikine(transl(target), 'q0', [0 0 0 0], 'mask', [1 1 1 0 0 0]);
-% disp(q_ik/3.1415926*180);
 
- 
-%% 展示当六个关节角为000000时对应的姿态
+%% 逆运动学求解示例
+disp('======= 逆运动学计算 =======');
+% 用正向运动学结果作为目标位姿
+T_target = T;  
 
-% theta=[0 0 0 0 ];
-% robot.plot(theta);   
-% p_1=robot.fkine(theta);
+% 设置逆解参数
+ik_options = {
+    'mask', [1 1 1 1 1 1],...  % 控制哪些自由度被考虑[tx ty tz rx ry rz]
+    'ilimit', 1000,...         % 最大迭代次数
+    'tol', 1e-6,...            % 容差
+    'quiet'...                 % 不显示迭代过程
+};
 
-%% 机器人的正解函数
+% 执行逆解（需要提供初始猜测）
+q0_guess = zeros(1,6);         % 初始猜测角度（通常取零位）                 
+q_ik = robot.ikine(T_target, q0_guess, ik_options{:});
 
-% theta1=[pi/4,-pi/3,pi/6,pi/4];
-% robot.plot(theta1);
-% p0=robot.fkine(theta);
-% p1=robot.fkine(theta1);
+% 显示逆解结果
+disp('逆解关节角度（弧度）:');
+disp(q_ik);
+disp('逆解关节角度（度）:');
+disp(rad2deg(q_ik));
 
-% 机器人的逆解
+%% 对比正逆解结果误差
+disp('======= 结果验证 =======');
+T_ik = robot.fkine(q_ik);      % 用逆解结果重新计算位姿
+position_error = norm(T.t - T_ik.t);  % 位置误差
+orientation_error = norm(T.R - T_ik.R);% 姿态误差
+disp(['位置误差：', num2str(position_error), ' mm']);
+disp(['姿态误差：', num2str(orientation_error)]);
 
-% Pos_x=180;Pos_y=180;Pos_z=180;
-%  p = [1 0 0 Pos_x;
-%       0 1 0 Pos_y;
-%       0 0 1 Pos_z;
-%       0 0 0 1];%已知空间中的位姿q
-% mask = [1 1 1 0 0 0];
-% q=ikine(robot,p,'mask',mask);   %ikine逆解函数，根据末端位姿p，求解出关节角q
-% robot.plot(q);%输出机器人模型，后面的三个角为输出时的theta姿态
-% disp(q);
+%% 人机交互界面
+robot.display();               % 展示DH参数
+disp('正在启动示教界面...');
+teach(robot);                  % 调出示教滑块

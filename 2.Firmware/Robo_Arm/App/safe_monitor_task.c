@@ -14,12 +14,12 @@ SAFE_MONITOR joint_torque_limit =
     // .joint_torque[3] = 0,
     .joint_torque[4] = 0,
 
-    .joint_torque_safelimit[0] = 2.8f,
-    .joint_torque_safelimit[1] = 2.8f,
-    .joint_torque_safelimit[2] = 2.8f,
-    .joint_torque_safelimit[3] = 2.8f,//
-    .joint_torque_safelimit[4] = 2.8f,
-    .joint_torque_safelimit[5] = 2.8f,//
+    .joint_torque_safelimit[0] = 5.8f,
+    .joint_torque_safelimit[1] = 5.8f,
+    .joint_torque_safelimit[2] = 5.8f,
+    .joint_torque_safelimit[3] = 5.8f,//
+    .joint_torque_safelimit[4] = 5.8f,
+    .joint_torque_safelimit[5] = 5.8f,//
 };
 
 
@@ -54,7 +54,7 @@ void SafeMonitorTask_Entry(void const * argument)
         }
         vbus = (adc_val[0]*3.3f/65535)*11.0f;
 
-        // PS2_ScanKey(&my_ps2,0);
+        PS2_ScanKey(&my_ps2,0);
         
         osDelay(10);
     }

@@ -8,8 +8,8 @@
 #include "can_bsp.h"
 
 #define JOINT_1_INIT_POS 0
-#define JOINT_2_INIT_POS 30
-#define JOINT_3_INIT_POS 45
+#define JOINT_2_INIT_POS 9.5
+#define JOINT_3_INIT_POS -25
 #define JOINT_4_INIT_POS 0
 #define JOINT_5_INIT_POS 0
 #define JOINT_6_INIT_POS 0

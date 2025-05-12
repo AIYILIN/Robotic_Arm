@@ -102,12 +102,12 @@ HAL_StatusTypeDef Arm_joints_control(ARM_JOINTS arm_joint[6])
         {
         case 1:
             {
-                Motion_Mode_Enable_Set(&Motors,3,arm_joint[i].torque,arm_joint[i].pos,arm_joint[i].w,arm_joint[i].kp,arm_joint[i].kw);
+                Motion_Mode_Enable_Set(&Motors,3, - arm_joint[i].torque, - arm_joint[i].pos, - arm_joint[i].w,arm_joint[i].kp,arm_joint[i].kw);
             }
             break;
         case 5:
             {
-                Motion_Mode_Enable_Set(&Motors,1,arm_joint[i].torque,arm_joint[i].pos,arm_joint[i].w,arm_joint[i].kp,arm_joint[i].kw);
+                Motion_Mode_Enable_Set(&Motors,1, - arm_joint[i].torque, - arm_joint[i].pos, - arm_joint[i].w,arm_joint[i].kp,arm_joint[i].kw);
             }
             break;
 
@@ -118,7 +118,7 @@ HAL_StatusTypeDef Arm_joints_control(ARM_JOINTS arm_joint[6])
             break;
         case 6:
             {
-                Emm_V5_Pos_Control_can(6,(arm_joint[5].pos > 0 ? 0 : 1),200,0,fabs(arm_joint[5].pos*3200/360.0),1,0);
+                // Emm_V5_Pos_Control_can(6,(arm_joint[5].pos > 0 ? 0 : 1),200,0,fabs(arm_joint[5].pos*3200/360.0),1,0);
             }
             break;
 
@@ -147,9 +147,9 @@ HAL_StatusTypeDef Arm_joints_control(ARM_JOINTS arm_joint[6])
             {
                 go_cmd3.id = arm_joint[i].id;
                 go_cmd3.mode = 1;
-                go_cmd3.T = arm_joint[i].torque; 
-                go_cmd3.W = arm_joint[i].w;
-                go_cmd3.Pos = arm_joint[i].pos;
+                go_cmd3.T = - arm_joint[i].torque; 
+                go_cmd3.W = -  arm_joint[i].w;
+                go_cmd3.Pos = - arm_joint[i].pos;
                 go_cmd3.K_P = arm_joint[i].kp;
                 go_cmd3.K_W = arm_joint[i].kw;
                 SERVO_Send_recv(&go_cmd3,&go_rec3);
@@ -186,7 +186,7 @@ void joint_T_profilel_param_init(T_Profile *profile)
     for (int i = 0; i < 3; i++) // 初始化前三个关节的参数
     {
         joint_T_profilel[i].vel_max = 50;    
-        joint_T_profilel[i].acc_max = 20;
+        joint_T_profilel[i].acc_max = 10;
 
         joint_T_profilel[i].vel_cur = 0;
         joint_T_profilel[i].vel_s_max = 0;
@@ -205,7 +205,7 @@ void joint_T_profilel_param_init(T_Profile *profile)
 
     // 小米电机
     joint_T_profilel[4].vel_max = 50;    
-    joint_T_profilel[4].acc_max = 20;
+    joint_T_profilel[4].acc_max = 10;
     joint_T_profilel[4].vel_cur = 0;
     joint_T_profilel[4].vel_s_max = 0;
     joint_T_profilel[4].t_time = 0;
