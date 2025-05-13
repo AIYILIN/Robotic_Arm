@@ -1,0 +1,34 @@
+CMakeFiles/main.dir/lvgl/src/misc/lv_log.c.obj: \
+ D:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\lckfb-hspi-d133ebs\aiui\Axis_Robot_UI\simulator\lvgl\src\misc\lv_log.c \
+ D:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\lckfb-hspi-d133ebs\aiui\Axis_Robot_UI\simulator\lvgl\src\misc\lv_log.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/Axis_Robot_UI/simulator/lvgl/src/lv_conf_internal.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdint.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/stdint.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/crtdefs.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_mac.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/vadefs.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sdks/_mingw_directx.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stddef.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/stddef.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/Axis_Robot_UI/simulator/lvgl/src/lv_conf_kconfig.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/Axis_Robot_UI/simulator/lv_conf.h \
+ D:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\lckfb-hspi-d133ebs\aiui\Axis_Robot_UI\simulator\lvgl\src\misc\lv_types.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdarg.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/stdarg.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/string.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
+ D:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\lckfb-hspi-d133ebs\aiui\Axis_Robot_UI\simulator\lvgl\src\misc\lv_printf.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/inttypes.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_print_push.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_print_pop.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/Axis_Robot_UI/simulator/lvgl/src/hal/lv_hal_tick.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/Axis_Robot_UI/simulator/lvgl/src/lv_conf_internal.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdbool.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/stdio.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_off_t.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/swprintf.inl \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h

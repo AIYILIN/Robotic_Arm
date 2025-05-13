@@ -1,0 +1,14 @@
+prefix=/c/Users/zequan.liang/Desktop/ui/LVGL/vscode_simulate/lvgl_v8v9_vscode_win64/third-party/ffmpeg/source/ffmpeg_install
+exec_prefix=${prefix}
+libdir=/c/Users/zequan.liang/Desktop/ui/LVGL/vscode_simulate/lvgl_v8v9_vscode_win64/third-party/ffmpeg/source/ffmpeg_install/lib
+includedir=/c/Users/zequan.liang/Desktop/ui/LVGL/vscode_simulate/lvgl_v8v9_vscode_win64/third-party/ffmpeg/source/ffmpeg_install/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 61.19.101
+Requires: 
+Requires.private: libavutil >= 59.39.100
+Conflicts:
+Libs: -L${libdir}  -lavcodec 
+Libs.private: -lm -latomic -lole32 -luser32 -lz
+Cflags: -I${includedir}

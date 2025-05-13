@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ai_lvgl>
+  <project_name>Axis_Robot_UI</project_name>
+  <ver_major>1</ver_major>
+  <ver_minor>2</ver_minor>
+  <ver_release>0</ver_release>
+  <lvgl_version>1</lvgl_version>
+  <board_id>0</board_id>
+  <template_id>0</template_id>
+  <color_depth>32</color_depth>
+  <resolution>
+    <width>480</width>
+    <height>272</height>
+  </resolution>
+</ai_lvgl>

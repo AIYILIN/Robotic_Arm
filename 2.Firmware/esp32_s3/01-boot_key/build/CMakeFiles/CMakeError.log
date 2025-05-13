@@ -1,0 +1,47 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: C:/Users/ALIN/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe 
+Build flags: -mlongcalls;;-fno-builtin-memcpy;-fno-builtin-memset;-fno-builtin-bzero;-fno-builtin-stpcpy;-fno-builtin-strncpy
+Id flags:  
+
+The output was:
+1
+cc1.exe: fatal error: CMakeCCompilerId.c: No such file or directory
+compilation terminated.
+
+
+The CXX compiler identification could not be found in "D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/a.out"
+
+The CXX compiler identification could not be found in "D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/tmp"
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/ALIN/.espressif/tools/ninja/1.11.1/ninja.exe cmTC_cb2e8 && ninja: error: unknown target 'cmTC_cb2e8'
+
+
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/ALIN/.espressif/tools/ninja/1.11.1/ninja.exe cmTC_61193 && ninja: error: loading 'build.ninja': 绯荤粺鎵句笉鍒版寚瀹氱殑鏂囦欢銆?
+
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/ALIN/.espressif/tools/ninja/1.11.1/ninja.exe cmTC_504a1 && ninja: error: unknown target 'cmTC_504a1'
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/ALIN/.espressif/tools/ninja/1.11.1/ninja.exe cmTC_46fba && ninja: error: loading 'build.ninja': 绯荤粺鎵句笉鍒版寚瀹氱殑鏂囦欢銆?
+
+
+
+

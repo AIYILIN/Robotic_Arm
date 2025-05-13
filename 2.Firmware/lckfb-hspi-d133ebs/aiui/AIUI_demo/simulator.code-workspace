@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+    ],
+    "settings": {
+        "terminal.integrated.env.windows": {
+            "PATH": "D:\\Program Files (x86)\\AiUIBuilder\\tool\\mingw\\bin;${env:PATH}"
+        }
+        "cmake.cmakePath": "D:\\Program Files (x86)\\AiUIBuilder\\tool\\cmake\\bin\\cmake",
+        "cmake.configureOnOpen": true
+    }
+}

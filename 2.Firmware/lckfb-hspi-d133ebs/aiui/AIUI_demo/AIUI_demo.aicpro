@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ai_lvgl>
+  <project_path>D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo</project_path>
+  <project_name>AIUI_demo</project_name>
+  <lvgl_version>1</lvgl_version>
+  <board_id>0</board_id>
+  <template_id>0</template_id>
+  <color_depth>32</color_depth>
+  <resolution>
+    <width>480</width>
+    <height>272</height>
+  </resolution>
+</ai_lvgl>

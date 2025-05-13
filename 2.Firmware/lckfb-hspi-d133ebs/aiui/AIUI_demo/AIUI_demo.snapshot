@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ailv-app>
+  <Screen is-default="1" id="1747106352666" name="screen" index="0">
+    <Normal>
+      <name>screen</name>
+      <scrollbar-mode>3</scrollbar-mode>
+      <flag></flag>
+    </Normal>
+    <Animate>
+      <use-anim>0</use-anim>
+    </Animate>
+    <Attribute/>
+    <Style>
+      <Part name="Main" value="0">
+        <State name="Default" value="0">
+          <bg-color>#ffffff</bg-color>
+          <bg-opa>0</bg-opa>
+          <bg-img-opa>255</bg-img-opa>
+          <bg-img-recolor>#000000</bg-img-recolor>
+          <bg-img-recolor-opa>0</bg-img-recolor-opa>
+        </State>
+      </Part>
+    </Style>
+    <Event/>
+    <Widgets>
+      <Widget is-hidden="0" type="3" id="1747106440494" name="switch_1" index="0">
+        <Normal>
+          <name>switch_1</name>
+          <postion>393,31</postion>
+          <size>50,26</size>
+          <scrollbar-mode>3</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <Attribute/>
+        <Style>
+          <Part name="Main" value="0">
+            <State name="Default" value="0">
+              <bg-color>#e0e0e0</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>30</radius>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#e0e0e0</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#e0e0e0</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+          <Part name="Indicator" value="131072">
+            <State name="Default" value="0">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Checked" value="1">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+          </Part>
+          <Part name="Knob" value="196608">
+            <State name="Default" value="0">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+      <Widget is-hidden="0" type="18" id="1747106453576" name="led_1" index="1">
+        <Normal>
+          <name>led_1</name>
+          <postion>16,64</postion>
+          <size>50,50</size>
+          <scrollbar-mode>3</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <Attribute>
+          <color>#2196f3</color>
+          <brightness>255</brightness>
+        </Attribute>
+        <Style/>
+        <Event/>
+      </Widget>
+      <Widget is-hidden="0" type="2" id="1747106665117" name="button_1" index="2">
+        <Normal>
+          <name>button_1</name>
+          <postion>13,199</postion>
+          <size>87,43</size>
+          <scrollbar-mode>3</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <Attribute>
+          <text>Button</text>
+        </Attribute>
+        <Style>
+          <Part name="Main" value="0">
+            <State name="Default" value="0">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <text-color>#ffffff</text-color>
+              <text-align>2</text-align>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>13</radius>
+              <shadow-color>#9e9e9e</shadow-color>
+              <shadow-opa>127</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>2</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>2</shadow-width>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <text-color>#ffffff</text-color>
+              <text-align>2</text-align>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>13</radius>
+              <shadow-color>#9e9e9e</shadow-color>
+              <shadow-opa>127</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>2</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>2</shadow-width>
+            </State>
+            <State name="Pressed" value="32">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <text-color>#ffffff</text-color>
+              <text-align>2</text-align>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>13</radius>
+              <shadow-color>#9e9e9e</shadow-color>
+              <shadow-opa>127</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>2</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>2</shadow-width>
+            </State>
+            <State name="Checked" value="1">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <text-color>#ffffff</text-color>
+              <text-align>2</text-align>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>13</radius>
+              <shadow-color>#9e9e9e</shadow-color>
+              <shadow-opa>127</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>2</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>2</shadow-width>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <text-color>#ffffff</text-color>
+              <text-align>2</text-align>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>13</radius>
+              <shadow-color>#9e9e9e</shadow-color>
+              <shadow-opa>127</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>2</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>2</shadow-width>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+      <Widget is-hidden="0" type="12" id="1747106674342" name="arc_1" index="3">
+        <Normal>
+          <name>arc_1</name>
+          <postion>108,73</postion>
+          <size>130,130</size>
+          <scrollbar-mode>3</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <Attribute>
+          <mode>0</mode>
+          <min-value>0</min-value>
+          <max-value>100</max-value>
+          <angle-start>135</angle-start>
+          <angle-end>270</angle-end>
+          <bg-angle-start>135</bg-angle-start>
+          <bg-angle-end>45</bg-angle-end>
+          <rotate>0</rotate>
+        </Attribute>
+        <Style>
+          <Part name="Main" value="0">
+            <State name="Default" value="0">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+              <arc-color>#e0e0e0</arc-color>
+              <arc-width>12</arc-width>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+              <arc-color>#e0e0e0</arc-color>
+              <arc-width>12</arc-width>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <pad-top>0</pad-top>
+              <pad-right>0</pad-right>
+              <pad-bottom>0</pad-bottom>
+              <pad-left>0</pad-left>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+              <arc-color>#e0e0e0</arc-color>
+              <arc-width>12</arc-width>
+            </State>
+          </Part>
+          <Part name="Indicator" value="131072">
+            <State name="Default" value="0">
+              <arc-color>#2196f3</arc-color>
+              <arc-width>12</arc-width>
+            </State>
+            <State name="Focused" value="2">
+              <arc-color>#2196f3</arc-color>
+              <arc-width>12</arc-width>
+            </State>
+            <State name="Disabled" value="128">
+              <arc-color>#2196f3</arc-color>
+              <arc-width>12</arc-width>
+            </State>
+          </Part>
+          <Part name="Knob" value="196608">
+            <State name="Default" value="0">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <pad-top>5</pad-top>
+              <pad-right>5</pad-right>
+              <pad-bottom>5</pad-bottom>
+              <pad-left>5</pad-left>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <pad-top>5</pad-top>
+              <pad-right>5</pad-right>
+              <pad-bottom>5</pad-bottom>
+              <pad-left>5</pad-left>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <pad-top>5</pad-top>
+              <pad-right>5</pad-right>
+              <pad-bottom>5</pad-bottom>
+              <pad-left>5</pad-left>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+      <Widget is-hidden="0" type="3" id="1747106688140" name="switch_2" index="4">
+        <Normal>
+          <name>switch_2</name>
+          <postion>91,10</postion>
+          <size>77,36</size>
+          <scrollbar-mode>3</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <Attribute/>
+        <Style>
+          <Part name="Main" value="0">
+            <State name="Default" value="0">
+              <bg-color>#e0e0e0</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>30</radius>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#e0e0e0</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#e0e0e0</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+          <Part name="Indicator" value="131072">
+            <State name="Default" value="0">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Checked" value="1">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>0</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+          </Part>
+          <Part name="Knob" value="196608">
+            <State name="Default" value="0">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#ffffff</bg-color>
+              <bg-opa>255</bg-opa>
+              <border-color>#000000</border-color>
+              <border-opa>255</border-opa>
+              <border-width>0</border-width>
+              <radius>32767</radius>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+      <Widget is-hidden="0" type="8" id="1747106697373" name="slider_1" index="5">
+        <Normal>
+          <name>slider_1</name>
+          <postion>110,250</postion>
+          <size>260,13</size>
+          <scrollbar-mode>3</scrollbar-mode>
+          <flag></flag>
+        </Normal>
+        <Animate>
+          <use-anim>0</use-anim>
+        </Animate>
+        <Attribute>
+          <min-value>0</min-value>
+          <max-value>100</max-value>
+          <value>50</value>
+        </Attribute>
+        <Style>
+          <Part name="Main" value="0">
+            <State name="Default" value="0">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>51</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>51</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>51</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+              <shadow-color>#000000</shadow-color>
+              <shadow-opa>255</shadow-opa>
+              <shadow-ofs-x>0</shadow-ofs-x>
+              <shadow-ofs-y>0</shadow-ofs-y>
+              <shadow-spread>0</shadow-spread>
+              <shadow-width>0</shadow-width>
+            </State>
+          </Part>
+          <Part name="Indicator" value="131072">
+            <State name="Default" value="0">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+            </State>
+          </Part>
+          <Part name="Knob" value="196608">
+            <State name="Default" value="0">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+            </State>
+            <State name="Focused" value="2">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+            </State>
+            <State name="Disabled" value="128">
+              <bg-color>#2196f3</bg-color>
+              <bg-opa>255</bg-opa>
+              <bg-img-opa>255</bg-img-opa>
+              <bg-img-recolor>#000000</bg-img-recolor>
+              <bg-img-recolor-opa>0</bg-img-recolor-opa>
+            </State>
+          </Part>
+        </Style>
+        <Event/>
+      </Widget>
+    </Widgets>
+  </Screen>
+</ailv-app>

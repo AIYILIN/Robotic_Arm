@@ -54,7 +54,7 @@ void SafeMonitorTask_Entry(void const * argument)
         }
         vbus = (adc_val[0]*3.3f/65535)*11.0f;
 
-        PS2_ScanKey(&my_ps2,0);
+        // PS2_ScanKey(&my_ps2,0);
         
         osDelay(10);
     }

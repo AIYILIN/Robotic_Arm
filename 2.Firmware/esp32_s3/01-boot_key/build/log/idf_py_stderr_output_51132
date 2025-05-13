@@ -1,0 +1,137 @@
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:842 (file):
+  file STRINGS file
+  "D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/a.out"
+  cannot be read.
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:948 (file):
+  file failed to open for reading (No such file or directory):
+
+    D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/a.out
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:951 (string):
+  string begin index: 1 is out of range 0 - 0
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:959 (math):
+  math cannot parse the expression: " * 16 + ": syntax error, unexpected
+  exp_TIMES (2).
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:961 (file):
+  file failed to open for reading (No such file or directory):
+
+    D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/a.out
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:842 (file):
+  file STRINGS file
+  "D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/tmp"
+  cannot be read.
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:948 (file):
+  file failed to open for reading (Permission denied):
+
+    D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/tmp
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:951 (string):
+  string begin index: 1 is out of range 0 - 0
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:959 (math):
+  math cannot parse the expression: " * 16 + ": syntax error, unexpected
+  exp_TIMES (2).
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:961 (file):
+  file failed to open for reading (Permission denied):
+
+    D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/3.24.0/CompilerIdCXX/tmp
+Call Stack (most recent call first):
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:11 (CMAKE_DETERMINE_COMPILER_ID_CHECK)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCompilerId.cmake:59 (__determine_compiler_id_test)
+  C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeDetermineCXXCompiler.cmake:120 (CMAKE_DETERMINE_COMPILER_ID)
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+
+CMake Error at C:/Users/ALIN/.espressif/tools/cmake/3.24.0/share/cmake-3.24/Modules/CMakeTestCCompiler.cmake:69 (message):
+  The C compiler
+
+    "C:/Users/ALIN/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/esp32_s3/01-boot_key/build/CMakeFiles/CMakeTmp
+    
+    Run Build Command(s):C:/Users/ALIN/.espressif/tools/ninja/1.11.1/ninja.exe cmTC_504a1 && ninja: error: unknown target 'cmTC_504a1'
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  C:/Users/ALIN/esp/v5.2.2/esp-idf/tools/cmake/project.cmake:506 (__project)
+  CMakeLists.txt:8 (project)
+
+

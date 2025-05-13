@@ -45,6 +45,11 @@ ylim = get(gca, 'YLim');
 zlim = get(gca, 'ZLim');
 workspace_limits = [xlim, ylim, zlim]; % 组合成 Xmin Xmax Ymin Ymax Zmin Zmax
 
+disp('xlim,ylim,zlim:');
+disp(xlim);
+disp(ylim);
+disp(zlim);
+
 % 绘制机械臂模型（设置完整的工作空间范围）
 q_plot = [0, 0, 0, 0, 0, 0];
 robot.plot(q_plot, ...

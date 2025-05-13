@@ -1,0 +1,30 @@
+CMakeFiles/main.dir/lvgl/src/extra/libs/qrcode/qrcodegen.c.obj: \
+ D:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\lckfb-hspi-d133ebs\aiui\AIUI_demo\simulator\lvgl\src\extra\libs\qrcode\qrcodegen.c \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed/limits.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed/syslimits.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/limits.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/crtdefs.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_mac.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/vadefs.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sdks/_mingw_directx.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/stdlib.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/malloc.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/string.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
+ D:\0_BackUP\Project\Robotic_Arm\Robo_Arm\2.Firmware\lckfb-hspi-d133ebs\aiui\AIUI_demo\simulator\lvgl\src\extra\libs\qrcode\qrcodegen.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdbool.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stddef.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/stddef.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdint.h \
+ D:/PROGRA~2/AIUIBU~1/tool/mingw/x86_64-w64-mingw32/include/stdint.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo/simulator/lvgl/src/misc/lv_assert.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo/simulator/lvgl/src/lv_conf_internal.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo/simulator/lvgl/src/lv_conf_kconfig.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo/simulator/lv_conf.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo/simulator/lvgl/src/misc/lv_log.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo/simulator/lvgl/src/misc/lv_types.h \
+ D:/0_BackUP/Project/Robotic_Arm/Robo_Arm/2.Firmware/lckfb-hspi-d133ebs/aiui/AIUI_demo/simulator/lvgl/src/misc/lv_mem.h

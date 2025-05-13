@@ -99,99 +99,99 @@ teach(robot, q_ik); % 以欧拉角形式显示
 
 
 
-
-%% 动态逆运动学：变换欧拉角中的某个分量
-target_pos = [343, -250, 158]';  % 保持目标位置固定
-base_eul_deg = [0, 40, 50];     % 基准欧拉角 [X,Y,Z]
-
-% 定义要遍历的参数
-varying_angle_index = 1;        % 选择要变化的欧拉角分量 (1=X, 2=Y, 3=Z)
-angle_range = 0:5:120;           % 角度变化范围 (0°到90°，步长5°)
-
-% 初始化存储矩阵
-q_ik_sequence = zeros(length(angle_range), 6);  % 存储关节角度
-error_flags = zeros(length(angle_range), 1);     % 错误标记
-
-% 循环计算逆解
-for i = 1:length(angle_range)
-    % 更新目标欧拉角
-    modified_eul_deg = base_eul_deg;
-    modified_eul_deg(varying_angle_index) = angle_range(i);
-
-    % 构造目标变换矩阵
-    R_target = eul2rotm(deg2rad(modified_eul_deg), 'XYZ');
-    T_target = [R_target, target_pos; 0 0 0 1];
-
-    % 求解逆运动学
-    try
-        q_ik = robot.ikine(T_target, 'q0', q0_guess, ik_options{:});
-
-        % 验证解的有效性
-        T_achieved = robot.fkine(q_ik);
-        pos_error = norm(T_achieved.t - target_pos);
-        if pos_error > 1e-3
-            error('Position error exceeds tolerance');
-        end
-
-        % 存储有效解
-        q_ik_sequence(i, :) = q_ik;
-        q0_guess = q_ik;  % 使用当前解作为下次初始猜测
-
-    catch ME
-        warning('无法求解角度 %.1f°: %s', angle_range(i), ME.message);
-        error_flags(i) = 1;
-    end
-end
-
-%% 结果可视化
-% 绘制关节角度变化曲线
-figure('Name','关节角度变化趋势');
-for j = 1:6
-    subplot(2,3,j);
-    plot(angle_range(~error_flags), q_ik_sequence(~error_flags, j));
-    xlabel('变化角度 (deg)');
-    ylabel(['关节 ', num2str(j), ' 角度 (rad)']);
-    title(['关节 ', num2str(j)]);
-    grid on;
-end
-
-
-
-
-
-%% 保存关节角度到Excel
-% 生成带时间戳的唯一文件名
-filename = sprintf('JointAngles_%s.xlsx', datestr(now, 'yyyymmdd_HHMMSS'));
-
-% 创建数据表格（角度值+关节角度）
-valid_indices = ~error_flags; % 获取有效解的索引
-
-% 将弧度转换为度数
-q_ik_deg = rad2deg(q_ik_sequence(valid_indices, :));
-
-% 构建数据矩阵
-data_matrix = [angle_range(valid_indices)', q_ik_deg]; 
-
-% 定义列标题
-headers = {'角度变化值(deg)', '关节1(deg)', '关节2(deg)', '关节3(deg)',...
-           '关节4(deg)', '关节5(deg)', '关节6(deg)'};
-
-% 创建表格对象
-data_table = array2table(data_matrix, 'VariableNames', headers);
-
-% 写入Excel文件
-writetable(data_table, filename);
-
-% 显示保存路径
-fprintf('数据已保存至文件: %s\\%s\n', pwd, filename);
-
-
-% 动态演示运动轨迹
-figure('Name','动态运动演示');
-robot.plot(q_ik_sequence(1, :));  % 初始位置
-for i = 2:length(angle_range)
-    if ~error_flags(i)
-        robot.plot(q_ik_sequence(i, :));
-        pause(0.1);  % 控制动画速度
-    end
-end
+% 
+% %% 动态逆运动学：变换欧拉角中的某个分量
+% target_pos = [343, -250, 158]';  % 保持目标位置固定
+% base_eul_deg = [0, 40, 50];     % 基准欧拉角 [X,Y,Z]
+% 
+% % 定义要遍历的参数
+% varying_angle_index = 1;        % 选择要变化的欧拉角分量 (1=X, 2=Y, 3=Z)
+% angle_range = 0:5:120;           % 角度变化范围 (0°到90°，步长5°)
+% 
+% % 初始化存储矩阵
+% q_ik_sequence = zeros(length(angle_range), 6);  % 存储关节角度
+% error_flags = zeros(length(angle_range), 1);     % 错误标记
+% 
+% % 循环计算逆解
+% for i = 1:length(angle_range)
+%     % 更新目标欧拉角
+%     modified_eul_deg = base_eul_deg;
+%     modified_eul_deg(varying_angle_index) = angle_range(i);
+% 
+%     % 构造目标变换矩阵
+%     R_target = eul2rotm(deg2rad(modified_eul_deg), 'XYZ');
+%     T_target = [R_target, target_pos; 0 0 0 1];
+% 
+%     % 求解逆运动学
+%     try
+%         q_ik = robot.ikine(T_target, 'q0', q0_guess, ik_options{:});
+% 
+%         % 验证解的有效性
+%         T_achieved = robot.fkine(q_ik);
+%         pos_error = norm(T_achieved.t - target_pos);
+%         if pos_error > 1e-3
+%             error('Position error exceeds tolerance');
+%         end
+% 
+%         % 存储有效解
+%         q_ik_sequence(i, :) = q_ik;
+%         q0_guess = q_ik;  % 使用当前解作为下次初始猜测
+% 
+%     catch ME
+%         warning('无法求解角度 %.1f°: %s', angle_range(i), ME.message);
+%         error_flags(i) = 1;
+%     end
+% end
+% 
+% %% 结果可视化
+% % 绘制关节角度变化曲线
+% figure('Name','关节角度变化趋势');
+% for j = 1:6
+%     subplot(2,3,j);
+%     plot(angle_range(~error_flags), q_ik_sequence(~error_flags, j));
+%     xlabel('变化角度 (deg)');
+%     ylabel(['关节 ', num2str(j), ' 角度 (rad)']);
+%     title(['关节 ', num2str(j)]);
+%     grid on;
+% end
+% 
+% 
+% 
+% 
+% 
+% %% 保存关节角度到Excel
+% % 生成带时间戳的唯一文件名
+% filename = sprintf('JointAngles_%s.xlsx', datestr(now, 'yyyymmdd_HHMMSS'));
+% 
+% % 创建数据表格（角度值+关节角度）
+% valid_indices = ~error_flags; % 获取有效解的索引
+% 
+% % 将弧度转换为度数
+% q_ik_deg = rad2deg(q_ik_sequence(valid_indices, :));
+% 
+% % 构建数据矩阵
+% data_matrix = [angle_range(valid_indices)', q_ik_deg]; 
+% 
+% % 定义列标题
+% headers = {'角度变化值(deg)', '关节1(deg)', '关节2(deg)', '关节3(deg)',...
+%            '关节4(deg)', '关节5(deg)', '关节6(deg)'};
+% 
+% % 创建表格对象
+% data_table = array2table(data_matrix, 'VariableNames', headers);
+% 
+% % 写入Excel文件
+% writetable(data_table, filename);
+% 
+% % 显示保存路径
+% fprintf('数据已保存至文件: %s\\%s\n', pwd, filename);
+% 
+% 
+% % 动态演示运动轨迹
+% figure('Name','动态运动演示');
+% robot.plot(q_ik_sequence(1, :));  % 初始位置
+% for i = 2:length(angle_range)
+%     if ~error_flags(i)
+%         robot.plot(q_ik_sequence(i, :));
+%         pause(0.1);  % 控制动画速度
+%     end
+% end
