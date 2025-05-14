@@ -1,0 +1,45 @@
+from building import *
+# 导入`building`模块的所有内容，是用于构建系统的工具和配置。
+
+import os
+# 导入`os`模块，用于文件和路径操作。
+
+cwd = GetCurrentDir()
+# 获取当前工作目录路径，赋值给变量`cwd`。
+
+group = []
+# 初始化一个空列表`group`，用于存储构建的代码组信息。
+
+src = Glob('*.c')
+# 使用 `Glob` 函数查找当前目录下的所有 `.c` 文件，并将其文件路径存储到变量 `src` 中。
+# `Glob` 是构建系统中的常见工具函数，用于匹配文件。
+
+CPPPATH = [cwd]
+# 定义预处理器头文件路径列表 `CPPPATH`，初始包含当前目录路径。
+
+list = os.listdir(cwd)
+# 使用 `os.listdir` 列出当前目录下的所有文件和文件夹，存储在变量 `list` 中。
+
+for d in list:
+    # 遍历目录内容 `list` 中的每一项。
+    path = os.path.join(cwd, d)
+    # 构造完整路径 `path`，将 `cwd` 和当前项 `d` 拼接起来。
+
+    if os.path.isfile(os.path.join(path, 'SConscript')):
+        # 检查当前路径是否包含名为 `SConscript` 的文件。
+
+        group = group + SConscript(os.path.join(d, 'SConscript'))
+        # 如果存在 `SConscript` 文件，则调用 `SConscript` 函数执行，并将返回的结果添加到 `group` 列表中。
+        # `SConscript` 是 SCons 构建工具中的函数，用于加载子目录的构建脚本。
+
+group = group + DefineGroup('LVGL-port', src, depend = ['AIC_LVGL_AIUIBUILDER_DEMO'], CPPPATH = CPPPATH)
+# 定义一个新的代码组 `LVGL-port`：
+# - `src`: 包含所有 `.c` 文件路径。
+# - `depend`: 定义依赖项，指定该组依赖于 `AIC_LVGL_AIUIBUILDER_DEMO`。
+# - `CPPPATH`: 将当前目录路径添加到编译器的头文件搜索路径。
+# 最终返回的结果与 `group` 合并。
+
+# 如果定义了 AIC_LVGL_AIUIBUILDER_DEMO 则将代码组加入编译！
+
+Return('group')
+# 返回 `group` 变量给调用者，作为最终的代码组信息供后续使用。
