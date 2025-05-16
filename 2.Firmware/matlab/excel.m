@@ -1,6 +1,6 @@
 % 配置输入输出文件名
-excel_file = 'JointAngles_20250512_193927.xlsx';   % 输入的Excel文件名
-txt_file   = 'output.txt';   % 输出的文本文件名
+excel_file = 'joint_angles_20250516_154820';   % 输入的Excel文件名
+txt_file   = 'joint_angles_20250516_154820.txt';   % 输出的文本文件名
 
 % 读取Excel数据（跳过标题行，提取数值部分）
 [~, ~, raw] = xlsread(excel_file);

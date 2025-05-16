@@ -13,10 +13,7 @@ void MotorCommTask_Entry(void const * argument)
 
     for (;;) 
     {
-
-        
-        // Arm_joints_control(arm_joint);
-
+        Arm_joints_control(arm_joint);
         osDelay(1);
     }
 

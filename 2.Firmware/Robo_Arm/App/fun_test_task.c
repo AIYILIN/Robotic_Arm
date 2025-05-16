@@ -47,8 +47,11 @@ void FunTest_Entry(void const * argument)
     HAL_UART_Receive_IT(&huart1, u1Rx, U1_RX_LEN);
     HAL_UART_Receive_IT(&huart7, u7Rx, U7_RX_LEN);
     HAL_UART_Receive_IT(&huart10, u10Rx, U10_RX_LEN);
-    osDelay(1000);
-    
+    osDelay(5000);
+    BSP_Buzzer_On();
+    osDelay(500);
+    BSP_Buzzer_Off();
+
     /* Infinite loop */
     for(;;)
     {

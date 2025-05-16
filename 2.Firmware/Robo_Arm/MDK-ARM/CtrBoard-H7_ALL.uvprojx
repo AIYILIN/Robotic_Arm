@@ -1552,16 +1552,6 @@
               <FileType>1</FileType>
               <FilePath>..\Algorithm\arm_kinematics.c</FilePath>
             </File>
-            <File>
-              <FileName>6dof_kinematic.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Algorithm\6dof_kinematic.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>dof6_c_interface.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Algorithm\dof6_c_interface.cpp</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
